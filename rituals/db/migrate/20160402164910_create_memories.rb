@@ -1,9 +1,9 @@
-class CreateRecipes < ActiveRecord::Migration
+class CreateMemories < ActiveRecord::Migration
   def change
-    create_table :recipes do |t|
+    create_table :memories do |t|
       t.string :title
       t.string :url
-      t.text :direction
+      t.text :description
       t.text :story
       t.references :user, index: true, foreign_key: true
 

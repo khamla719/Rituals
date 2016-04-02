@@ -3,11 +3,11 @@
 one:
   title: MyString
   url: MyString
-  direction: MyText
-  story: 
+  description: MyText
+  story:
 
 two:
   title: MyString
   url: MyString
-  direction: MyText
-  story: 
+  description: MyText
+  story:

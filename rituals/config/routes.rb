@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :users do
-    resources :recipes
+    resources :memories
   end
+ get '/' => 'welcome#index'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
