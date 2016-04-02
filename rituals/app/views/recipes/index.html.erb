@@ -20,9 +20,10 @@
         <td><%= recipe.url %></td>
         <td><%= recipe.direction %></td>
         <td><%= recipe.story %></td>
-        <td><%= link_to 'Show', user_recipe_path(recipe) %></td>
-        <td><%= link_to 'Edit', edit_user_recipe_path(recipe) %></td>
-        <td><%= link_to 'Destroy', user_recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <td><%= link_to 'Show', user_recipe_path(@user, recipe) %></td>
+        <td><%= link_to 'Edit', edit_user_recipe_path(@user, recipe) %></td>
+        <td><%= link_to 'Destroy', user_recipe_path(@user, recipe), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
