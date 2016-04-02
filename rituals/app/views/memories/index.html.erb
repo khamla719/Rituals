@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+<%user = @user%>
+<h1>Listing Memories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Url</th>
+      <th>Description</th>
+      <th>Story</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @memories.each do |memory| %>
+      <tr>
+        <td><%= memory.title %></td>
+        <td><%= memory.url %></td>
+        <td><%= memory.description %></td>
+        <td><%= memory.story %></td>
+
+        <td><%= link_to 'Show', user_memory_path(@user, memory) %></td>
+        <td><%= link_to 'Edit', edit_user_memory_path(@user, memory) %></td>
+        <td><%= link_to 'Destroy', user_memory_path(@user, memory), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Memory', new_user_memory_path %>
