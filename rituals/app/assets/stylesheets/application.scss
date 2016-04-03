@@ -14,7 +14,9 @@
  *= require_self
  */
 
- /* Basic sample */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
 
 body{
   overflow:hidden;
