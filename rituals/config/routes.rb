@@ -3,7 +3,8 @@ Rails.application.routes.draw do
     resources :memories
   end
   resources :sessions
- get '/' => 'welcome#index'
+
+  get '/' => 'welcome#index'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
 

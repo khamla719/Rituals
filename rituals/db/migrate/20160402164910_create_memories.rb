@@ -5,7 +5,7 @@ class CreateMemories < ActiveRecord::Migration
       t.string :url
       t.text :description
       t.text :story
-      t.boolean :private
+      t.boolean :private, default: true
       t.references :user, index: true, foreign_key: true
 
       t.timestamps null: false
