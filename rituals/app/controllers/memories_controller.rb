@@ -39,7 +39,7 @@ class MemoriesController < ApplicationController
     @memory.user_id = @user.id
     respond_to do |format|
       if @memory.save
-        format.html { redirect_to user_memories_path, notice: 'memory was successfully created.' }
+        format.html { redirect_to user_path(@user), notice: 'memory was successfully created.' }
         format.json { render :show, status: :created, location: @memory }
       else
         format.html { render :new }
@@ -51,9 +51,11 @@ class MemoriesController < ApplicationController
   # PATCH/PUT /memories/1
   # PATCH/PUT /memories/1.json
   def update
+    @memory = Memory.find_by(id: params[:id])
+    @user = User.find_by(id: params[:user_id])
     respond_to do |format|
       if @memory.update(memory_params)
-        format.html { redirect_to  user_path, notice: 'memory was successfully updated.' }
+        format.html { redirect_to  user_path(@user), notice: 'memory was successfully updated.' }
         format.json { render :show, status: :ok, location: @memory }
       else
         format.html { render :edit }
@@ -65,9 +67,11 @@ class MemoriesController < ApplicationController
   # DELETE /memories/1
   # DELETE /memories/1.json
   def destroy
+    @user = User.find_by(id: params[:user_id])
+    @memory = Memory.find_by(id: params[:id])
     @memory.destroy
     respond_to do |format|
-      format.html { redirect_to user_path, notice: 'memory was successfully destroyed.' }
+      format.html { redirect_to user_path(@user), notice: 'memory was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -75,7 +79,9 @@ class MemoriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_memory
+      if @memory
       @memory = Memory.find(params[:id])
+    end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
