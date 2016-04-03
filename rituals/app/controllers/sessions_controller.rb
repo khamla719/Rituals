@@ -6,15 +6,16 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:session][:email].downcase)
     # binding.pry
     if @user && @user.authenticate(params[:session][:password])
-      redirect_to @user
+      session[:id] = @user.id
+      redirect_to user_path(@user.id)
     else
       # Create an error message.
       render 'new'
     end
   end
 
-  def destory
+  def destroy
     session[:id] = nil
-    redirect '/'
+  redirect_to root_path
   end
 end
