@@ -18,7 +18,8 @@ class MemoriesController < ApplicationController
 
   # GET /memories/new
   def new
-    @user = User.find_by(params[:id])
+    # binding.pry
+    @user = User.find_by(id: session[:id])
     @memory = @user.memories.new
   end
 
