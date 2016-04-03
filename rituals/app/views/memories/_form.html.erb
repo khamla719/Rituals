@@ -25,6 +25,13 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
+    <%= f.label :private? %><br />
+    <%= f.label :private, "Yes", :value => "true"  %>
+    <%= f.radio_button :private, true, :checked => true %>
+    <%= f.label :private, "No", :value => "false" %>
+    <%= f.radio_button :private, false %>
+  </div>
+  <div class="field">
     <%= f.label :story %><br>
     <%= f.text_field :story %>
   </div>
