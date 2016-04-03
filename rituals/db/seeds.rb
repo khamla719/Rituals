@@ -10,14 +10,13 @@
 # 10.times do
 #   User.create(first_name: Faker::Name.name , last_name: Faker::Name.last_name, password: Faker::Internet.password, email: Faker::Internet.email)
 # end
+user = User.create(first_name: "Aaron", last_name: "Hu", email: "aaron@aaron.com", password: "password")
 
-# 20.times do
-#   Memory.create(title: Faker::Hacker.noun, url: Faker::Placeholdit.image, description: Faker::Hipster.sentence, story: Faker::Hipster.paragraph, user_id: rand(0..10)  )
-# end
+20.times do
+  Memory.create(title: Faker::Hacker.noun, url: Faker::Avatar.image, description: Faker::Lorem.sentence, story: Faker::Lorem.sentences, user_id: user.id  )
+end
 
-User.create(first_name: "aaron", last_name: "lastname", password: "password", email: "aaron@aaron.com")
-User.create(first_name: "khamla", last_name: "lastname", password: "password", email: "khamla@khamla.com")
-User.create(first_name: "tim", last_name: "lastname", password: "password", email: "as@aaron.com")
+
 
 # Membership.create(user_id: 1, family_id: 2)
 # Membership.create(user_id: 1, family_id: 3)

@@ -2,10 +2,12 @@ Rails.application.routes.draw do
   resources :users do
     resources :memories
   end
- get '/' => 'welcome#index'
+  resources :sessions
+
+  get '/' => 'welcome#index'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
-  delete 'logout'  => 'sessions#destroy'
+
   root "welcome#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
