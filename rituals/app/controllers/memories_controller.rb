@@ -5,7 +5,7 @@ class MemoriesController < ApplicationController
   # GET /memories.json
   def index
     # binding.pry
-    @user = User.find_by(params[:id])
+    @user = User.find_by(id: session[:id])
     @memories = @user.memories
   end
 
@@ -18,12 +18,14 @@ class MemoriesController < ApplicationController
 
   # GET /memories/new
   def new
-    @user = User.find_by(params[:id])
+    # binding.pry
+    @user = User.find_by(id: session[:id])
     @memory = @user.memories.new
   end
 
   # GET /memories/1/edit
   def edit
+    # binding.pry
     @user = User.find_by(id: params[:user_id])
     @memory = Memory.find_by(id: params[:id])
     # @memory.update(memory_params)
@@ -67,6 +69,7 @@ class MemoriesController < ApplicationController
   # DELETE /memories/1
   # DELETE /memories/1.json
   def destroy
+    binding.pry
     @user = User.find_by(id: params[:user_id])
     @memory = Memory.find_by(id: params[:id])
     @memory.destroy

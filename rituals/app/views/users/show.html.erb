@@ -13,7 +13,7 @@
   <div class="container">
     <div class="flipbook">
       <div>
-      <h1> <%=@user.first_name  + "'s" + " memories"%></h1>
+      <h1> <%=@user.first_name.capitalize  + "'s" + " memories"%></h1>
       </div>
  <% @memories.each do |memory| %>
       <div>
@@ -21,9 +21,11 @@
          <p><%= memory.story %></p>
       </div>
       <div>
-      Title: <h1> <%= memory.title %></h1>
+      <h1> <%= memory.title.capitalize %></h1>
       <br>
-      Url: <img src="<%=memory.url%>" alt="some_text">
+      <% if memory.url %>
+      Url: <img src="<%=memory.url%>" alt="image of story">
+      <% end %>
       <br>
       Description: <p><%= memory.description %></p>
       <br>
@@ -72,9 +74,9 @@ function loadApp() {
 
 yepnope({
   test : Modernizr.csstransforms,
-  yep: ['../../assets/javascripts/turn.js'],
-  nope: ['../../assets/javascripts/turn.html4.min.js'],
-  both: ['../../basic/css/basic.css'],
+  // yep: ['../../assets/javascripts/turn.js'],
+  // nope: ['../../assets/javascripts/turn.html4.min.js'],
+  // both: ['../../basic/css/basic.css'],
   complete: loadApp
 });
 
