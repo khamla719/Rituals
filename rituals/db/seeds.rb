@@ -12,7 +12,7 @@
 end
 
 20.times do
-  Memory.create(title: Faker::Hacker.noun, url: Faker::Avatar.image, description: Faker::Lorem.sentence, story: Faker::Lorem.sentences, user_id: rand(0..10)  )
+  Memory.create(title: Faker::Hacker.noun, url: Faker::Avatar.image, description: Faker::Lorem.sentence, story: Faker::Lorem.sentences, private: [true, false].sample, user_id: rand(1..10)  )
 end
 
 

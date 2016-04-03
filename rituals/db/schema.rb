@@ -28,10 +28,10 @@ ActiveRecord::Schema.define(version: 20160403190513) do
     t.string   "url"
     t.text     "description"
     t.text     "story"
-    t.boolean  "private"
+    t.boolean  "private",     default: true
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "memories", ["user_id"], name: "index_memories_on_user_id", using: :btree
