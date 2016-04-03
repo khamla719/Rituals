@@ -13,4 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+
+//= require components
 //= require_tree .
+//= require bootstrap-sprockets
+window.onload = function() {
+// setTimeout(function(){
+//     $('.test').addClass('magictime puffIn');
+// }, 5000);
+};
