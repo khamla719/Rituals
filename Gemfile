@@ -17,6 +17,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'react-rails', '~> 1.6.0'
+gem 'rails_12factor', group: :production
 
 
 group :development, :test do
