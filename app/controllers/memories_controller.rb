@@ -69,7 +69,7 @@ class MemoriesController < ApplicationController
   # DELETE /memories/1
   # DELETE /memories/1.json
   def destroy
-    binding.pry
+    # binding.pry
     @user = User.find_by(id: params[:user_id])
     @memory = Memory.find_by(id: params[:id])
     @memory.destroy
