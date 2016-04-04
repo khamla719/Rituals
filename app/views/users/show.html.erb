@@ -6,8 +6,14 @@
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
 
 
+<% if session[:id] && session[:id] == @user.id %>
+  <%= link_to 'New Memory', new_user_memory_path(@user) %>
+<% end %>
 
-<%= link_to 'New Memory', new_user_memory_path(@user) %>
+<% if session[:id] == @user.id %>
+<% else %>
+<% @memories = @user.memories.where(private: false) %>
+<% end %>
 
 <div class="flipbook-viewport">
   <div class="container">
