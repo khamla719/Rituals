@@ -7,8 +7,8 @@
   <%= csrf_meta_tags %>
 
 <meta name="viewport" content="width = 1050, user-scalable = no" />
-<script type="text/javascript" src="../../extras/jquery.min.1.7.js"></script>
-<script type="text/javascript" src="../../extras/modernizr.2.5.3.min.js"></script>
+<!-- <script type="text/javascript" src="../../extras/jquery.min.1.7.js"></script>
+<script type="text/javascript" src="../../extras/modernizr.2.5.3.min.js"></script> -->
 </head>
 </head>
 <body>
@@ -16,7 +16,7 @@
   <ul class="nav nav-tabs">
     <li><a href="/">Home</a></li>
     <% if session[:id] != nil %>
-      <li><%= link_to "Log Out", session_path(current_user.id), method: :delete %>
+      <li><%= link_to "Log Out", session_path(session[:id]), method: :delete %>
     </li>
     <%else%>
       <li><a href="/login">Login</a></li>
