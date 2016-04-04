@@ -19,8 +19,9 @@ ActiveRecord::Schema.define(version: 20160403190513) do
   create_table "memberships", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "family_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "authorized", default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "memories", force: :cascade do |t|
