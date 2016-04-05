@@ -12,19 +12,7 @@
 </head>
 </head>
 <body>
-<nav>
-  <ul class="nav nav-tabs">
-    <li><a href="/">Home</a></li>
-    <% if session[:id] != nil %>
-      <li><%= link_to "Log Out", session_path(current_user.id), method: :delete %>
-    </li>
-    <%else%>
-      <li><a href="/login">Login</a></li>
-    <%end%>
-    <li><a href="mailto:
-      devapptesting01@gmail.com">Contact Us</a></li>
-  </ul>
-</nav>
+
 <%= yield %>
 
 </body>
