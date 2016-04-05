@@ -16,8 +16,14 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
+                    <li class="center">
+                      Memories <span class="badge"> <%= @memories.count %> </span>
+                    </li>
                     <li>
-                        <%= link_to 'Add Memory', new_user_memory_path(@user) %>
+                      <a href="#" class="gray_text">Family Members <span class="badge"> <%= @user.families.count %> </span></a>
+                    </li>
+                    <li>
+                        <%= link_to 'Add Memory', new_user_memory_path(@user), :class => "gray_text" %>
                     </li>
                     <li>
                         <%= link_to 'Logout', session_path(@user), method: :delete, data: { confirm: 'Are you sure?' } %>
@@ -34,7 +40,7 @@
   <div class="container">
     <div class="flipbook">
       <div class="book">
-        <h1> <%=@user.first_name.capitalize  + "'s" + " memories"%></h1>
+        <h1><%=@user.first_name.capitalize  + "'s" + " memories"%></h1>
       </div>
       <% @memories.each do |memory| %>
       <div>
@@ -51,7 +57,7 @@
         Description: <p><%= memory.description %></p>
         <br>
         <td><%= link_to 'Edit', edit_user_memory_path(@user, memory) %></td>
-        <td><%= link_to 'Destroy', user_memory_path(@user, memory), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Remove', user_memory_path(@user, memory), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </div>
       <% end %>
       <div class="book">
