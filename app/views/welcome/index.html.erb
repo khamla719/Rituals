@@ -90,17 +90,20 @@
                     <div class="logo"><h2>login</h2></div>
                     <!-- Main Form -->
                     <div class="login-form-1">
-                        <form id="login-form" class="text-left">
+                        <form id="login-form" class="text-left" action="/sessions" method="post">
                             <div class="login-form-main-message"></div>
                             <div class="main-login-form">
                                 <div class="login-group">
                                     <div class="form-group">
                                         <label for="lg_username" class="sr-only">Username</label>
-                                        <input type="text" class="form-control" id="lg_username" name="lg_username" placeholder="username">
+                                        <input type="text" class="form-control" id="lg_username" name="user[email]" placeholder="username">
                                     </div>
                                     <div class="form-group">
                                         <label for="lg_password" class="sr-only">Password</label>
-                                        <input type="password" class="form-control" id="lg_password" name="lg_password" placeholder="password">
+                                        <input type="password" class="form-control" id="lg_password" name="user[password]" placeholder="password">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" value="Login">
                                     </div>
 
                                 </form>
