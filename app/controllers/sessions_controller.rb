@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       redirect_to @user
     else
       # Create an error message.
-      render 'new'
+      redirect_to root_path
     end
   end
 

@@ -1,5 +1,6 @@
 class MemoriesController < ApplicationController
   before_action :set_memory, only: [:show, :edit, :update, :destroy]
+  protect_from_forgery with: :null_session
 
   # GET /memories
   # GET /memories.json
@@ -18,7 +19,7 @@ class MemoriesController < ApplicationController
 
   # GET /memories/new
   def new
-    # binding.pry
+    binding.pry
     @user = User.find_by(id: session[:id])
     @memory = @user.memories.new
   end
