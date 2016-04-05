@@ -19,7 +19,6 @@
 
 
 body{
-  overflow:hidden;
   background-color:#fcfcfc;
   margin:0;
   padding:0;
@@ -39,6 +38,7 @@ body{
 }
 
 .flipbook-viewport .flipbook{
+  margin-top:90px;
   width:922px;
   height:600px;
   left:-461px;
@@ -62,6 +62,8 @@ body{
 }
 
 .flipbook-viewport .page img{
+  max-width: 100%;
+  max-height: 100%;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -84,3 +86,6 @@ body{
   box-shadow:0 0 20px #ccc;
 }
 
+.flipbook-viewport .flipbook .book {
+  background-image: url("http://img12.deviantart.net/1a4b/i/2010/012/1/c/grunge_red_cloth_book_by_techture.jpg");
+}
