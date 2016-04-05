@@ -20,7 +20,7 @@
                         <%= link_to 'Add Memory', new_user_memory_path(@user) %>
                     </li>
                     <li>
-                        <%= link_to 'Logout', sessions_path(@user), method: :delete, data: { confirm: 'Are you sure?' } %>
+                        <%= link_to 'Logout', session_path(@user), method: :delete, data: { confirm: 'Are you sure?' } %>
                     </li>
                 </ul>
             </div>
