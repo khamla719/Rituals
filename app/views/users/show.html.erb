@@ -91,28 +91,33 @@
 
 
 
+
 <div class="flipbook-viewport">
   <div class="container">
     <div class="flipbook animated fadeInUpBig">
       <div class="book">
-        <h1><%=@user.first_name.capitalize  + "'s" + " memories"%></h1>
+        <h1 class="indent"><%=@user.first_name.capitalize  + "'s" + " memories"%></h1>
       </div>
       <% @memories.each do |memory| %>
-      <div>
-        <h1> Story </h1>
-        <p><%= memory.story %></p>
+      <div >
+        <h1 class="indent"> Story </h1>
+        <p class="indent"><%= memory.story %></p>
       </div>
       <div>
-        <h1> <%= memory.title.capitalize %></h1>
+        <h1 class="indent"> <%= memory.title.capitalize %></h1>
         <br>
         <% if memory.url %>
+        <p class="indent">
         Url: <img src="<%=memory.url%>" alt="image of story">
+        </p>
         <% end %>
         <br>
-        Description: <p><%= memory.description %></p>
+        <p class="indent"> Description:</p> <p class="indent"><%= memory.description %></p>
         <br>
-        <td><%= link_to 'Edit', edit_user_memory_path(@user, memory) %></td>
-        <td><%= link_to 'Remove', user_memory_path(@user, memory), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <p class="indent">
+        <td class="indent"><%= link_to 'Edit', edit_user_memory_path(@user, memory) %></td>
+        <td class="indent"><%= link_to 'Remove', user_memory_path(@user, memory), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </p>
       </div>
       <% end %>
       <div class="book">
