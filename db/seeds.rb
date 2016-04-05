@@ -7,16 +7,17 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-# 10.times do
-#   User.create(first_name: Faker::Name.name , last_name: Faker::Name.last_name, password: Faker::Internet.password, email: Faker::Internet.email)
-# end
-user = User.create(first_name: "Aaron", last_name: "Hu", email: "aaron@aaron.com", password: "password")
+10.times do
+  User.create(first_name: Faker::Name.name , last_name: Faker::Name.last_name, password: 'password', email: Faker::Internet.email)
+end
+# user = User.create(first_name: "Aaron", last_name: "Hu", email: "aaron@aaron.com", password: "password")
 
 20.times do
-  Memory.create(title: Faker::Hacker.noun, url: Faker::Avatar.image, description: Faker::Lorem.sentence, story: Faker::Lorem.sentences, user_id: user.id  )
+  Memory.create(title: Faker::Hacker.noun, url: Faker::Avatar.image, description: Faker::Lorem.sentence, story: Faker::Lorem.sentences, user_id: rand(1..10)  )
 end
 
-
-
-# Membership.create(user_id: 1, family_id: 2)
-# Membership.create(user_id: 1, family_id: 3)
+Membership.create(user_id: 1, family_id: 4)
+Membership.create(user_id: 1, family_id: 3)
+Membership.create(user_id: 1, family_id: 5)
+Membership.create(user_id: 1, family_id: 2)
+Membership.create(user_id: 1, family_id: 9)
