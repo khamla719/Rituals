@@ -15,6 +15,8 @@
 //= require turbolinks
 //= require jquery.min.1.7
 //= require modernizr.2.5.3.min
+//= require whatever.js
+
 
 //= require components
 //= require_tree .

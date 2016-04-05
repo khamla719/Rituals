@@ -1,0 +1,31 @@
+.center {
+    margin-top:50px;
+}
+
+.modal-header {
+  padding-bottom: 5px;
+}
+
+
+textarea {  margin: 0px;
+            width: 514px;
+            height: 199px;
+            text-align: center;
+          }
+
+.modal-footer {
+      padding: 0;
+  }
+
+
+.modal-footer .btn-group button {
+  height:40px;
+  border-top-left-radius : 0;
+  border-top-right-radius : 0;
+  border: none;
+  border-right: 1px solid #ddd;
+}
+
+.modal-footer .btn-group:last-child > button {
+  border-right: 0;
+}
