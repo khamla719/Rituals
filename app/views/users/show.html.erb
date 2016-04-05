@@ -33,7 +33,7 @@
 <div class="flipbook-viewport">
   <div class="container">
     <div class="flipbook">
-      <div>
+      <div class="book">
         <h1> <%=@user.first_name.capitalize  + "'s" + " memories"%></h1>
       </div>
       <% @memories.each do |memory| %>
@@ -100,3 +100,4 @@ yepnope({
 });
 
 </script>
+
