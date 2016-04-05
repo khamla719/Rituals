@@ -4,9 +4,6 @@
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                         <i class="fa fa-bars"></i>
                     </button>
-                <!-- <a class="navbar-brand page-scroll" href="#page-top">
-                    <i class="fa fa-play-circle"></i>  <span class="light">Start</span> Bootstrap
-                </a> -->
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -16,8 +13,14 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
+                    <li class="center">
+                      Memories <span class="badge"> <%= @memories.count %> </span>
+                    </li>
                     <li>
-                        <a href="#" class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#login-modal">Create a Memory</a>
+                      <a href="#" class="gray_text">Family Members <span class="badge"> <%= @user.families.count %> </span></a>
+                    </li>
+                    <li>
+                        <a href="#" class="gray_text" role="button" data-toggle="modal" data-target="#login-modal">Create a Memory</a>
                     </li>
                     <li>
                         <%= link_to 'Logout', session_path(@user), method: :delete, data: { confirm: 'Are you sure?' } %>
@@ -29,68 +32,52 @@
         <!-- /.container -->
     </nav>
 
-<!-- END # BOOTSNIP INFO -->
-
 <!-- BEGIN # MODAL LOGIN -->
-<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header" align="center">
-                    <img class="img-circle" id="img_logo" src="https://usmansami.files.wordpress.com/2015/08/cdsffgmfsd.jpg">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                    </button>
+    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header" align="center">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </button>
+          </div>
+
+          <div id="div-forms">
+            <form action="/users/<%= @user.id %>/memories" method="post" id="login-form">
+              <div class="modal-body">
+                <div id="div-login-msg">
+                </div>
+                <div class="form-group">
+                  <label for='login_username'>Title of Your Memory: </label>
+                  <input class="form-control" type='text' name='memory[title]'>
                 </div>
 
-                <!-- Begin # DIV Form -->
-                <div id="div-forms">
-
-                    <!-- Begin # Login Form -->
-                    <form id="login-form">
-                        <div class="modal-body">
-                            <div id="div-login-msg">
-
-
-                            </div>
-                           <div class="form-group">
-  <label for='login_username'>Title of Your Memory: </label>
-  <input class="form-control" type='text' name='memory[title]'>
-</div>
-
-<div class="form-group">
-  <label for='description'>URL: </label>
-  <input class="form-control" type='text' name='item[description]'>
-</div>
-
-<div class="form-group">
-  <label for='start_date'>Description: </label>
-  <input class="form-control" type='textarea' name='item[start_date]'>
-</div>
-  <label for='story'>Story: </label>
-<br>
-<textarea cols="40" rows="5" name="story">
-Tell Your Story
-</textarea>
-<br>
-                                               <label for="login_password">Security</label><br>
-
-                            <input id="login_password" class="form-control" type="text" placeholder="Public/Private" required>
-
-                            </div>
-                        </div>
- <div class="modal-footer">
-                            <div>
-                                <button type="submit" class="btn btn-primary btn-lg btn-block">Create Memory</button>
-                            </div>
-                    </form>
-                    <!-- End # Login Form -->
-
-                    <!-- Begin | Lost Password Form -->
-
+                <div class="form-group">
+                  <label for='description'>URL of Image: </label>
+                  <input class="form-control" type='text' name='memory[url]'>
                 </div>
-                <!-- End # DIV Form -->
 
-            </div>
+                <div class="form-group">
+                  <label for='start_date'>Description: </label>
+                  <input class="form-control" type='textarea' name='memory[description]'>
+                </div>
+                <div>
+                  <label for='story'>Story: </label><br>
+                  <textarea cols="50" rows="10" name="memory[story]" text-align="left"></textarea>
+                  <br>
+                  <label for="private?">Privacy: </label><br>
+                  <input type="radio" name="memory[private]" value="true" checked> Private?<br>
+                  <input type="radio" name="memory[private]" value="false"> Public?<br>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <div>
+                  <button type="submit" class="btn btn-primary btn-lg btn-block">Create Memory</button>
+                </div>
+              </div>
+            </form>
+           </div>
+          </div>
         </div>
     </div>
 </body>
@@ -108,7 +95,7 @@ Tell Your Story
   <div class="container">
     <div class="flipbook animated fadeInUpBig">
       <div class="book">
-        <h1> <%=@user.first_name.capitalize  + "'s" + " memories"%></h1>
+        <h1><%=@user.first_name.capitalize  + "'s" + " memories"%></h1>
       </div>
       <% @memories.each do |memory| %>
       <div>
@@ -125,7 +112,7 @@ Tell Your Story
         Description: <p><%= memory.description %></p>
         <br>
         <td><%= link_to 'Edit', edit_user_memory_path(@user, memory) %></td>
-        <td><%= link_to 'Destroy', user_memory_path(@user, memory), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Remove', user_memory_path(@user, memory), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </div>
       <% end %>
       <div class="book">
