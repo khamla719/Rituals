@@ -99,7 +99,7 @@
           </div>
 
           <div id="div-forms">
-          <h1> Your Family Members </h1>
+            <h1> Your Family Members </h1>
             <ul>
               <% @user.families.each do |family_member| %>
 
@@ -139,8 +139,13 @@
           <br>
           Description: <p><%= memory.description %></p>
           <br>
+
+          <!-- If it is not the User's book, no auth for memories -->
+          <% if @user.id == session[:id] %>
           <td><%= link_to 'Edit', edit_user_memory_path(@user, memory) %></td>
           <td><%= link_to 'Remove', user_memory_path(@user, memory), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <%end%>
+
         </div>
         <% end %>
         <div class="book">
