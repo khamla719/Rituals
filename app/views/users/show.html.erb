@@ -55,22 +55,30 @@
 
 
     <!-- BEGIN # MODAL Family -->
-    <div class="modal fade" id="family-modal" tabindex="-1" role="dialog" aria labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal fade" id="family-modal" tabindex="-1" role="dialog" aria labelledby="myModalLabel" aria-hidden="true" >
+
       <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" style="background-color: black">
+
           <div class="modal-header" align="center">
+               <h1 style="color: white; font-family: 'Tangerine', cursive;"> Your Family Members </h1>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+
             </button>
           </div>
 
           <div id="div-forms">
-            <h1> Your Family Members </h1>
-            <ul id="all-member-list">
-              <% @user.families.each do |family_member| %>
-                <li><a href="<%=family_member.id%>"><%= family_member.first_name %></a></li>
-              <%end%>
-            </ul>
+
+<% current_user.families.each do |category| %>
+  <div class="col-md-13">
+    <div class="list-group-item" style="text-align: center; background-color: #996515;">
+      <a href="/users/<%=category.id%>" style="color: white"> <%=category.first_name%></a>
+    </div>
+  </div>
+<% end %>
+<div class="modal-footer">
+
+                </div>
           </div>
         </div>
       </div>
