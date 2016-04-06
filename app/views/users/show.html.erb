@@ -140,16 +140,26 @@
           Description: <p><%= memory.description %></p>
           <br>
 
+          <!-- If memory does not belong to user's family member's, they cannot share -->
+          <%current_user.families.each do |family_member| %>
+          <%if memory.user_id == family_member.id %>
+          <td><%= link_to 'Share', edit_user_memory_path(@user, memory) %></td>
+          <%end%>
+          <%end%>
+
+
           <!-- If it is not the User's book, no auth for memories -->
-          <% if @user.id == session[:id] %>
+          <% if memory.user_id == session[:id] %>
           <td><%= link_to 'Edit', edit_user_memory_path(@user, memory) %></td>
           <td><%= link_to 'Remove', user_memory_path(@user, memory), method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <%end%>
+
 
         </div>
         <% end %>
         <div class="book">
         </div>
+
       </div>
     </div>
   </div>
@@ -189,7 +199,8 @@
 
 yepnope({
   test : Modernizr.csstransforms,
-  // Test changed to speed up book
+
+  // Tests changed to speed up book
   // yep: ['../../assets/javascripts/turn.js'],
   // nope: ['../../assets/javascripts/turn.html4.min.js'],
   // both: ['../../basic/css/basic.css'],
