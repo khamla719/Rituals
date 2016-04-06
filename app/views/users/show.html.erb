@@ -103,10 +103,9 @@
 
           <div id="div-forms">
             <h1> Your Family Members </h1>
-            <ul>
+            <ul id="all-member-list">
               <% @user.families.each do |family_member| %>
-
-              <li><a href="<%=family_member.id%>"><%= family_member.first_name %></a></li>
+                <li><a href="<%=family_member.id%>"><%= family_member.first_name %></a></li>
               <%end%>
             </ul>
           </div>

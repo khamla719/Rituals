@@ -110,7 +110,19 @@ $(function() {
 
 //     })
 // })
-
+// $('#new-membership-form').on('submit', function(e){
+//     e.preventDefault();
+//     var that = this
+//     var path = this.action
+//     var mtype = this.method
+//     var data = $('#new-membership-form').serialize()
+//     // debugger
+//     $.ajax({
+//         type: mtype,
+//         url: path,
+//         data: data
+//     })
+// })
 
 
 
