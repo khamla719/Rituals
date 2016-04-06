@@ -45,6 +45,9 @@
           <% if @user.email %>
             <li class="hidden">
               <a href="#page-top"></a>
+            <li>
+              <%= link_to "Home", user_path(@user) %>
+            </li>
             </li>
             <li class="center"> Memories <span class="badge"> <%= @memories.count %> </span>
             </li>
@@ -57,18 +60,18 @@
             <li>
               <a href="#" class="gray_text" role="button" data-toggle="modal" data-target="#new-member-modal">Add A Family Member</a>
             </li>
-            <li>
-              <%= link_to 'Logout', session_path(@user), method: :delete, data: { confirm: 'Are you sure?' } %>
+            <li style="color:white">
+              <%= link_to 'Logout', session_path(@user), method: :delete, data: { confirm: 'Are you sure?' }, :class => "gray_text" %>
             </li>
           <% else %>
             <li class="hidden">
               <a href="#page-top"></a>
             </li>
             <li>
-              <a class="page-scroll" href="#login">Login</a>
+              <a class="page-scroll" href="#login" style="text-transform: capitalize;">Login</a>
             </li>
             <li>
-              <a class="page-scroll" href=".download-section">Sign Up</a>
+              <a class="page-scroll" href=".download-section" style="text-transform: capitalize;">Sign Up</a>
             </li>
           <% end %>
         </ul>
