@@ -96,11 +96,13 @@
   <div class="container">
     <div class="flipbook animated fadeInUpBig">
       <div class="hard book">
-        <h1 class="indent"><%=@user.first_name.capitalize  + "'s" + " memories"%></h1>
+        <h1 id= "cover" class="indent "><%=@user.first_name.capitalize  + "'s" + " memories"%></h1>
       </div>
       <div class="hard book">
       </div>
       <div class='page-wrapper'>
+        <br>
+        <p class="indent">Dedicated to the wonderful people in my life</p>
       </div>
       <% @memories.each do |memory| %>
       <div class='page-wrapper'>
