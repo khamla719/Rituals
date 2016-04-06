@@ -17,12 +17,15 @@
                 Memories <span class="badge"> <%= @memories.count %> </span>
               </li>
               <li>
+                <a href="#" class="gray_text" role="button" data-toggle="modal" data-target="#new-memory-modal">Create a Memory</a>
+              </li>
+              <li>
 
                 <a href="#" class="gray_text" role="button" data-toggle="modal" data-target="#family-modal">Family Members  <span class="badge"> <%= @user.families.count %> </span>
                 </a>
               </li>
               <li>
-                <a href="#" class="gray_text" role="button" data-toggle="modal" data-target="#login-modal">Create a Memory</a>
+                <a href="#" class="gray_text" role="button" data-toggle="modal" data-target="#new-member-modal">Add A Family Member</a>
               </li>
               <li>
                 <%= link_to 'Logout', session_path(@user), method: :delete, data: { confirm: 'Are you sure?' } %>
@@ -35,7 +38,7 @@
       </nav>
 
       <!-- BEGIN # MODAL Create a Memory -->
-      <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+      <div class="modal fade" id="new-memory-modal" tabindex="-1" role="dialog" aria labelledby="myModalLabel" aria-hidden="true" style="display: none;">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header" align="center">
@@ -110,7 +113,41 @@
         </div>
       </div>
     </div>
-  </body>
+
+
+      <!-- BEGIN # MODAL Add Family Modal -->
+    <div class="modal fade" id="new-member-modal" tabindex="-1" role="dialog" aria labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header" align="center">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </button>
+          </div>
+
+          <div id="div-forms">
+            <h1> Your Family Members By Email</h1>
+            <form action="/users/<%= @user.id %>/memberships" method="post" id="new-membership-form">
+                <div class="modal-body">
+                  <div id="div-login-msg">
+                  </div>
+                  <div class="form-group">
+                    <label for='login_username'>Users email: </label>
+                    <input class="form-control" type='text' name='email'>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <div>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Add to Family</button>
+                  </div>
+                </div>
+              </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
 
 
 
