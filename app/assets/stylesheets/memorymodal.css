@@ -6,7 +6,6 @@
   padding-bottom: 5px;
 }
 
-
 textarea {
   margin: 0px;
   width: 567px;
@@ -15,8 +14,7 @@ textarea {
 
 .modal-footer {
       padding: 0;
-  }
-
+}
 
 .modal-footer .btn-group button {
   height:40px;
