@@ -1,39 +1,95 @@
       <nav class="navbar navbar-custom navbar-fixed-top animated fadeIn" role="navigation" style="background-color:black;">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-                        <i class="fa fa-bars"></i>
-                    </button>
-            </div>
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+              <i class="fa fa-bars"></i>
+            </button>
+          </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-                <ul class="nav navbar-nav">
-                    <!-- Hidden li included to remove active class from login link when scrolled up past login section -->
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li class="center">
-                      Memories <span class="badge"> <%= @memories.count %> </span>
-                    </li>
-                    <li>
-                      <a href="#" class="gray_text">Family Members <span class="badge"> <%= @user.families.count %> </span></a>
-                    </li>
-                    <li>
-                        <a href="#" class="gray_text" role="button" data-toggle="modal" data-target="#login-modal">Create a Memory</a>
-                    </li>
-                    <li>
-                        <%= link_to 'Logout', session_path(@user), method: :delete, data: { confirm: 'Are you sure?' } %>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+            <ul class="nav navbar-nav">
+              <!-- Hidden li included to remove active class from login link when scrolled up past login section -->
+              <li class="hidden">
+                <a href="#page-top"></a>
+              </li>
+              <li class="center">
+                Memories <span class="badge"> <%= @memories.count %> </span>
+              </li>
+              <li>
+
+                <a href="#" class="gray_text" role="button" data-toggle="modal" data-target="#family-modal">Family Members  <span class="badge"> <%= @user.families.count %> </span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="gray_text" role="button" data-toggle="modal" data-target="#login-modal">Create a Memory</a>
+              </li>
+              <li>
+                <%= link_to 'Logout', session_path(@user), method: :delete, data: { confirm: 'Are you sure?' } %>
+              </li>
+            </ul>
+          </div>
+          <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
-    </nav>
+      </nav>
 
-<!-- BEGIN # MODAL LOGIN -->
-    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+      <!-- BEGIN # MODAL Create a Memory -->
+      <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header" align="center">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+              </button>
+            </div>
+
+            <div id="div-forms">
+              <form action="/users/<%= @user.id %>/memories" method="post" id="login-form">
+                <div class="modal-body">
+                  <div id="div-login-msg">
+                  </div>
+                  <div class="form-group">
+                    <label for='login_username'>Title of Your Memory: </label>
+                    <input class="form-control" type='text' name='memory[title]'>
+                  </div>
+
+                  <div class="form-group">
+                    <label for='description'>URL of Image: </label>
+                    <input class="form-control" type='text' name='memory[url]'>
+                  </div>
+
+                  <div class="form-group">
+                    <label for='start_date'>Description: </label>
+                    <input class="form-control" type='textarea' name='memory[description]'>
+                  </div>
+                  <div>
+                    <label for='story'>Story: </label><br>
+                    <textarea cols="50" rows="10" name="memory[story]" text-align="left"></textarea>
+                    <br>
+                    <label for="private?">Privacy: </label><br>
+                    <input type="radio" name="memory[private]" value="true" checked> Private?<br>
+                    <input type="radio" name="memory[private]" value="false"> Public?<br>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <div>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Create Memory</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+
+
+
+
+
+    <!-- BEGIN # MODAL Family -->
+    <div class="modal fade" id="family-modal" tabindex="-1" role="dialog" aria labelledby="myModalLabel" aria-hidden="true" style="display: none;">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header" align="center">
@@ -43,44 +99,18 @@
           </div>
 
           <div id="div-forms">
-            <form action="/users/<%= @user.id %>/memories" method="post" id="login-form">
-              <div class="modal-body">
-                <div id="div-login-msg">
-                </div>
-                <div class="form-group">
-                  <label for='login_username'>Title of Your Memory: </label>
-                  <input class="form-control" type='text' name='memory[title]'>
-                </div>
+            <h1> Your Family Members </h1>
+            <ul>
+              <% @user.families.each do |family_member| %>
 
-                <div class="form-group">
-                  <label for='description'>URL of Image: </label>
-                  <input class="form-control" type='text' name='memory[url]'>
-                </div>
-
-                <div class="form-group">
-                  <label for='start_date'>Description: </label>
-                  <input class="form-control" type='textarea' name='memory[description]'>
-                </div>
-                <div>
-                  <label for='story'>Story: </label><br>
-                  <textarea cols="50" rows="10" name="memory[story]" text-align="left"></textarea>
-                  <br>
-                  <label for="private?">Privacy: </label><br>
-                  <input type="radio" name="memory[private]" value="true" checked> Private?<br>
-                  <input type="radio" name="memory[private]" value="false"> Public?<br>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <div>
-                  <button type="submit" class="btn btn-primary btn-lg btn-block">Create Memory</button>
-                </div>
-              </div>
-            </form>
-           </div>
+              <li><a href="<%=family_member.id%>"><%= family_member.first_name %></a></li>
+              <%end%>
+            </ul>
           </div>
         </div>
+      </div>
     </div>
-</body>
+  </body>
 
 
 
@@ -89,57 +119,72 @@
 
 
 
+  <div class="flipbook-viewport">
+    <div class="container">
+      <div class="flipbook animated fadeInUpBig">
+        <div class="hard book">
+          <h1 id= "cover" class="indent "><%=@user.first_name.capitalize  + "'s" + " memories"%></h1>
+        </div>
+        <div class="hard book">
+        </div>
+        <div class='page-wrapper'>
+          <br>
+          <p class="indent">Dedicated to the wonderful people in my life</p>
+        </div>
+        <% @memories.each do |memory| %>
+        <div class='page-wrapper'>
+          <h1 class="indent"> Story </h1>
+          <p class="indent"><%= memory.story %></p>
+        </div>
+        <div class="page-wrapper">
+          <h1 class="indent"> <%= memory.title.capitalize %></h1>
+          <br>
+          <% if memory.url %>
+          <p class="indent">
+            Url: <img src="<%=memory.url%>" alt="image of story">
+          </p>
+          <%end%>
+          <br>
+          <p class="indent">
+          Description: <p class= "indent"><%= memory.description %></p>
+          </p>
+          <br>
+
+          <!-- If memory does not belong to user's family member's, they cannot share -->
+          <%current_user.families.each do |family_member| %>
+          <%if memory.user_id == family_member.id %>
+          <%= link_to 'Share', share_index_path(memory), method: :post %>
+          <%end%>
+          <%end%>
 
 
+          <!-- If it is not the User's book, no auth for memories -->
+          <% if memory.user_id == session[:id] %>
+          <p class= "indent">
+          <td><%= link_to 'Edit', edit_user_memory_path(@user, memory) %></td>
+          <td><%= link_to 'Remove', user_memory_path(@user, memory), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </p>
+          <%end%>
 
-<div class="flipbook-viewport">
-  <div class="container">
-    <div class="flipbook animated fadeInUpBig">
-      <div class="hard book">
-        <h1 id= "cover" class="indent "><%=@user.first_name.capitalize  + "'s" + " memories"%></h1>
-      </div>
-      <div class="hard book">
-      </div>
-      <div class='page-wrapper'>
-        <br>
-        <p class="indent">Dedicated to the wonderful people in my life</p>
-      </div>
-      <% @memories.each do |memory| %>
-      <div class='page-wrapper'>
-        <h1 class="indent"> Story </h1>
-        <p class="indent"><%= memory.story %></p>
-      </div>
-      <div class="page-wrapper">
-        <h1 class="indent"> <%= memory.title.capitalize %></h1>
-        <br>
-        <% if memory.url %>
-        <p class="indent">
-        Url: <img src="<%=memory.url%>" alt="image of story">
-        </p>
+
+        </div>
+
         <% end %>
-        <br>
-        <p class="indent"> Description:</p> <p class="indent"><%= memory.description %></p>
-        <br>
-        <p class="indent">
-        <td class="indent"><%= link_to 'Edit', edit_user_memory_path(@user, memory) %></td>
-        <td class="indent"><%= link_to 'Remove', user_memory_path(@user, memory), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </p>
-      </div>
-      <% end %>
-      <div class='page-wrapper'>
-      </div>
-      <div class="hard book">
-      </div>
-      <div class="hard book">
+        <div class = "paper-wrapper">
+        </div>
+        <div class= "book hard">
+        </div>
+        <div class="book hard">
+        </div>
+
       </div>
     </div>
   </div>
-</div>
 
 
-<script type="text/javascript">
+  <script type="text/javascript">
 
-function loadApp() {
+    function loadApp() {
 
   // Create the flipbook
 

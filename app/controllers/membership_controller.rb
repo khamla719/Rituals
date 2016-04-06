@@ -1,5 +1,5 @@
-class MemoriesController < ApplicationController
+class MembershipsController < ApplicationController
   def create
-    binding.pry
+
   end
 end
