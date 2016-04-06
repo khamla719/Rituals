@@ -69,10 +69,10 @@
 
           <div id="div-forms">
 
-<% current_user.families.each do |category| %>
+<% @user.families.each do |family_member| %>
   <div class="col-md-13">
-    <div class="list-group-item" style="text-align: center; background-color: #996515;">
-      <a href="/users/<%=category.id%>" style="color: white"> <%=category.first_name%></a>
+    <div class="list-group-item modal_text_box" ;>
+      <a href="/users/<%=family_member.id%>" style="color: white"> <%=family_member.first_name%></a>
     </div>
   </div>
 <% end %>
@@ -88,21 +88,22 @@
       <!-- BEGIN # MODAL Add Family Modal -->
     <div class="modal fade" id="new-member-modal" tabindex="-1" role="dialog" aria labelledby="myModalLabel" aria-hidden="true" style="display: none;">
       <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" style="background-color: black">
           <div class="modal-header" align="center">
+           <h1 style="color: white; font-family: 'Tangerine', cursive;"> Add Family Member</h1>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
             </button>
           </div>
 
           <div id="div-forms">
-            <h1> Your Family Members By Email</h1>
+
             <form action="/users/<%= @user.id %>/memberships" method="post" id="new-membership-form">
                 <div class="modal-body">
                   <div id="div-login-msg">
                   </div>
                   <div class="form-group">
-                    <label for='login_username'>Users email: </label>
+                    <label for='login_username'  >Email: </label>
                     <input class="form-control" type='text' name='email'>
                   </div>
                 </div>
