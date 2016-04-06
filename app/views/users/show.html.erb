@@ -1,41 +1,7 @@
-      <nav class="navbar navbar-custom navbar-fixed-top animated fadeIn" role="navigation" style="background-color:black;">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-              <i class="fa fa-bars"></i>
-            </button>
-          </div>
 
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-            <ul class="nav navbar-nav">
-              <!-- Hidden li included to remove active class from login link when scrolled up past login section -->
-              <li class="hidden">
-                <a href="#page-top"></a>
-              </li>
-              <li class="center">
-                Memories <span class="badge"> <%= @memories.count %> </span>
-              </li>
-              <li>
-
-                <a href="#" class="gray_text" role="button" data-toggle="modal" data-target="#family-modal">Family Members  <span class="badge"> <%= @user.families.count %> </span>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="gray_text" role="button" data-toggle="modal" data-target="#login-modal">Create a Memory</a>
-              </li>
-              <li>
-                <%= link_to 'Logout', session_path(@user), method: :delete, data: { confirm: 'Are you sure?' } %>
-              </li>
-            </ul>
-          </div>
-          <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-      </nav>
 
       <!-- BEGIN # MODAL Create a Memory -->
-      <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+      <div class="modal fade" id="new-memory-modal" tabindex="-1" role="dialog" aria labelledby="myModalLabel" aria-hidden="true" style="display: none;">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header" align="center">
@@ -100,17 +66,50 @@
 
           <div id="div-forms">
             <h1> Your Family Members </h1>
-            <ul>
+            <ul id="all-member-list">
               <% @user.families.each do |family_member| %>
-
-              <li><a href="<%=family_member.id%>"><%= family_member.first_name %></a></li>
+                <li><a href="<%=family_member.id%>"><%= family_member.first_name %></a></li>
               <%end%>
             </ul>
           </div>
         </div>
       </div>
     </div>
-  </body>
+
+
+      <!-- BEGIN # MODAL Add Family Modal -->
+    <div class="modal fade" id="new-member-modal" tabindex="-1" role="dialog" aria labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header" align="center">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </button>
+          </div>
+
+          <div id="div-forms">
+            <h1> Your Family Members By Email</h1>
+            <form action="/users/<%= @user.id %>/memberships" method="post" id="new-membership-form">
+                <div class="modal-body">
+                  <div id="div-login-msg">
+                  </div>
+                  <div class="form-group">
+                    <label for='login_username'>Users email: </label>
+                    <input class="form-control" type='text' name='email'>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <div>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Add to Family</button>
+                  </div>
+                </div>
+              </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
 
 
 
@@ -125,18 +124,20 @@
         <div class="hard book">
           <h1 id= "cover" class="indent "><%=@user.first_name.capitalize  + "'s" + " memories"%></h1>
         </div>
+
         <div class="hard book">
         </div>
+
         <div class='page-wrapper'>
           <br>
           <p class="indent">Dedicated to the wonderful people in my life</p>
         </div>
-        <% @memories.each do |memory| %>
+          <% @memories.each do |memory| %>
         <div class='page-wrapper'>
           <h1 class="indent"> Story </h1>
           <p class="indent"><%= memory.story %></p>
         </div>
-        <div class="page-wrapper">
+        <div class="page-wrapper new-memory">
           <h1 class="indent"> <%= memory.title.capitalize %></h1>
           <br>
           <% if memory.url %>
@@ -170,7 +171,8 @@
         </div>
 
         <% end %>
-        <div class = "paper-wrapper">
+
+        <div class = "paper-wrapper" id='last-page'>
         </div>
         <div class= "book hard">
         </div>
