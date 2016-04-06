@@ -8,13 +8,9 @@
   <link href='https://fonts.googleapis.com/css?family=Tangerine' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=La+Belle+Aurore' rel='stylesheet' type='text/css'>
   <meta name="viewport" content="width = 1050, user-scalable = no" />
-  <script type="text/javascript" src="../../extras/jquery.min.1.7.js"></script>
-  <script type="text/javascript" src="../../extras/modernizr.2.5.3.min.js"></script>
-  <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+<!--   // <script type="text/javascript" src="../../extras/jquery.min.1.7.js"></script>
+  // <script type="text/javascript" src="../../extras/modernizr.2.5.3.min.js"></script> -->
 
-    <!-- Custom CSS -->
-    <link href="css/grayscale.css" rel="stylesheet">
 
     <!-- Animation CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/animatecss/3.5.1/animate.css">
@@ -34,7 +30,56 @@
 </head>
 </head>
 <body>
+        <!-- Navigation -->
+        <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                        <i class="fa fa-bars"></i>
+                    </button>
+            </div>
 
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from login link when scrolled up past login section -->
+
+                    <% if @user.email %>
+                        <li class="hidden">
+                          <a href="#page-top"></a>
+                        </li>
+                        <li class="center"> Memories <span class="badge"> <%= @memories.count %> </span>
+                        </li>
+                        <li>
+                          <a href="#" class="gray_text" role="button" data-toggle="modal" data-target="#new-memory-modal">Create a Memory</a>
+                        </li>
+                        <li>
+                          <a href="#" class="gray_text" role="button" data-toggle="modal" data-target="#family-modal">Family Members  <span class="badge"> <%= @user.families.count %> </span></a>
+                        </li>
+                        <li>
+                          <a href="#" class="gray_text" role="button" data-toggle="modal" data-target="#new-member-modal">Add A Family Member</a>
+                        </li>
+                        <li>
+                          <%= link_to 'Logout', session_path(@user), method: :delete, data: { confirm: 'Are you sure?' } %>
+                        </li>
+                    <% else %>
+                      <li class="hidden">
+                        <a href="#page-top"></a>
+                      </li>
+                      <li>
+                        <a class="page-scroll" href="#login">Login</a>
+                      </li>
+                      <li>
+                        <a class="page-scroll" href="#download">Sign Up</a>
+                      </li>
+                    <% end %>
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
   <%= yield %>
 
 

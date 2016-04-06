@@ -1,41 +1,4 @@
-      <nav class="navbar navbar-custom navbar-fixed-top animated fadeIn" role="navigation" style="background-color:black;">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-              <i class="fa fa-bars"></i>
-            </button>
-          </div>
 
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-            <ul class="nav navbar-nav">
-              <!-- Hidden li included to remove active class from login link when scrolled up past login section -->
-              <li class="hidden">
-                <a href="#page-top"></a>
-              </li>
-              <li class="center">
-                Memories <span class="badge"> <%= @memories.count %> </span>
-              </li>
-              <li>
-                <a href="#" class="gray_text" role="button" data-toggle="modal" data-target="#new-memory-modal">Create a Memory</a>
-              </li>
-              <li>
-
-                <a href="#" class="gray_text" role="button" data-toggle="modal" data-target="#family-modal">Family Members  <span class="badge"> <%= @user.families.count %> </span>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="gray_text" role="button" data-toggle="modal" data-target="#new-member-modal">Add A Family Member</a>
-              </li>
-              <li>
-                <%= link_to 'Logout', session_path(@user), method: :delete, data: { confirm: 'Are you sure?' } %>
-              </li>
-            </ul>
-          </div>
-          <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-      </nav>
 
       <!-- BEGIN # MODAL Create a Memory -->
       <div class="modal fade" id="new-memory-modal" tabindex="-1" role="dialog" aria labelledby="myModalLabel" aria-hidden="true" style="display: none;">
