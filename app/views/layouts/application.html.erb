@@ -45,6 +45,9 @@
           <% if @user.email %>
             <li class="hidden">
               <a href="#page-top"></a>
+            <li>
+              <%= link_to "Home", user_path(@user) %>
+            </li>
             </li>
             <li class="center"> Memories <span class="badge"> <%= @memories.count %> </span>
             </li>
