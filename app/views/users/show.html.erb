@@ -122,42 +122,59 @@
   <div class="flipbook-viewport">
     <div class="container">
       <div class="flipbook animated fadeInUpBig">
-        <div class="book">
-          <h1><%=@user.first_name.capitalize  + "'s" + " memories"%></h1>
+        <div class="hard book">
+          <h1 id= "cover" class="indent "><%=@user.first_name.capitalize  + "'s" + " memories"%></h1>
+        </div>
+        <div class="hard book">
+        </div>
+        <div class='page-wrapper'>
+          <br>
+          <p class="indent">Dedicated to the wonderful people in my life</p>
         </div>
         <% @memories.each do |memory| %>
-        <div>
-          <h1> Story </h1>
-          <p><%= memory.story %></p>
+        <div class='page-wrapper'>
+          <h1 class="indent"> Story </h1>
+          <p class="indent"><%= memory.story %></p>
         </div>
-        <div>
-          <h1> <%= memory.title.capitalize %></h1>
+        <div class="page-wrapper">
+          <h1 class="indent"> <%= memory.title.capitalize %></h1>
           <br>
           <% if memory.url %>
-          Url: <img src="<%=memory.url%>" alt="image of story">
-          <% end %>
+          <p class="indent">
+            Url: <img src="<%=memory.url%>" alt="image of story">
+          </p>
+          <%end%>
           <br>
-          Description: <p><%= memory.description %></p>
+          <p class="indent">
+          Description: <p class= "indent"><%= memory.description %></p>
+          </p>
           <br>
 
           <!-- If memory does not belong to user's family member's, they cannot share -->
           <%current_user.families.each do |family_member| %>
           <%if memory.user_id == family_member.id %>
-              <%= link_to 'Share', share_index_path(memory), method: :post %>
-            <%end%>
+          <%= link_to 'Share', share_index_path(memory), method: :post %>
+          <%end%>
           <%end%>
 
-x
+
           <!-- If it is not the User's book, no auth for memories -->
           <% if memory.user_id == session[:id] %>
+          <p class= "indent">
           <td><%= link_to 'Edit', edit_user_memory_path(@user, memory) %></td>
           <td><%= link_to 'Remove', user_memory_path(@user, memory), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </p>
           <%end%>
 
 
         </div>
+
         <% end %>
-        <div class="book">
+        <div class = "paper-wrapper">
+        </div>
+        <div class= "book hard">
+        </div>
+        <div class="book hard">
         </div>
 
       </div>
