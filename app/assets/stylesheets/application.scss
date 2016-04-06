@@ -97,10 +97,26 @@ margin-top: 15px;
 margin-right: 5px;
 }
 
-.gray_text{
-color: green;
+a.gray_text {
+color: white;
 }
 
+li.center{
+ color: white;
+}
+
+a.page_scroll.page_scroll_format{
+text-transform: lowercase;
+}
+
+a.gray_text:hover {
+color: gray;
+ background-color: inherit !important;
+ text-decoration: none;
+}
+li.center.hover {
+ color: gray;
+}
 .indent{
 margin-left: 20px;
 margin-right: 15px;
@@ -132,4 +148,8 @@ background: -o-linear-gradient(transparent, transparent);
 
 nav a {
   color: yellow;
+}
+
+gray_text{
+  color: white;
 }
