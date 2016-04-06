@@ -17,7 +17,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-
 body{
   background-color: black !important;
   margin:0;
@@ -130,4 +129,11 @@ h1.indent {
   background: -o-linear-gradient(transparent, transparent);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.user-text{
+  font-family: 'Goudy Old Style', Garamond, 'Big Caslon', 'Times New Roman', serif;
+  font-size: 18px;
+  margin-left: 16px;
+  margin-right: 16px;
 }
