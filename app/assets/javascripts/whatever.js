@@ -95,19 +95,19 @@ $(function() {
     }
 
 
-// $('#create_new_memory').on("click", function(e){
+// $('#login-form').on("submit", function(e){
 //     e.preventDefault();
-//     var that = this.parentElement.parentElement.parentElement
-//     var path = this.parentElement.parentElement.parentElement.action
-//     var data = $('#create-memory').serialize();
+//     // debugger
+//     var that = this
+//     var path = this.action
+//     var data = $('#login-form').serialize();
 //     $.ajax({
 //         type: "post",
 //         url: path,
 //         data: data
 //     }).done(function(e){
 //         console.log(e);
-//         $('#book-pages').append(e);
-
+//         $('.last-page').before(e);
 //     })
 // })
 // $('#new-membership-form').on('submit', function(e){
