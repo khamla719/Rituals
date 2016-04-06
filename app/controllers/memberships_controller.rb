@@ -8,7 +8,7 @@ class MembershipsController < ApplicationController
       Membership.create(user_id: family.id, family_id: @user.id)
       if request.xhr?
         # binding.pry
-        render :partial => "membership"
+        render partial: :membership
       end
       redirect_to @user
     else
