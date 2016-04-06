@@ -1,0 +1,16 @@
+      <div>
+        <h1> Story </h1>
+        <p><%= @memory.story %></p>
+      </div>
+      <div>
+        <h1> <%= @memory.title.capitalize %></h1>
+        <br>
+        <% if @memory.url %>
+        Url: <img src="<%=@memory.url%>" alt="image of story">
+        <% end %>
+        <br>
+        Description: <p><%= @memory.description %></p>
+        <br>
+        <td><%= link_to 'Edit', edit_user_memory_path(@user, @memory) %></td>
+        <td><%= link_to 'Remove', user_memory_path(@user, @memory), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </div>
