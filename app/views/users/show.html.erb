@@ -141,13 +141,12 @@
           <h1 class="indent"> <%= memory.title.capitalize %></h1>
           <br>
           <% if memory.url %>
-          <p class="indent">
-            Url: <img src="<%=memory.url%>" alt="image of story">
-          </p>
+          <p class="indent"><img src="<%=memory.url%>" alt="image of story"></p>
           <%end%>
           <br>
           <p class="indent">
-          Description: <p class= "indent"><%= memory.description %></p>
+          Description:
+          <p class= "user-text"><%= memory.description %></p>
           </p>
           <br>
 
