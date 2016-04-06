@@ -153,17 +153,19 @@
 
           <!-- If memory does not belong to user's family member's, they cannot share -->
           <%current_user.families.each do |family_member| %>
-          <%if memory.user_id == family_member.id %>
-          <%= link_to 'Share', share_index_path(memory), method: :post %>
-          <%end%>
+            <%if memory.user_id == family_member.id %>
+              <p class= "indent">
+                <%= link_to 'Share', share_index_path(memory), method: :post %>
+              </p>
+            <%end%>
           <%end%>
 
 
           <!-- If it is not the User's book, no auth for memories -->
           <% if memory.user_id == session[:id] %>
           <p class= "indent">
-          <td><%= link_to 'Edit', edit_user_memory_path(@user, memory) %></td>
-          <td><%= link_to 'Remove', user_memory_path(@user, memory), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Edit', edit_user_memory_path(@user, memory) %></td>
+            <td><%= link_to 'Remove', user_memory_path(@user, memory), method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </p>
           <%end%>
 
