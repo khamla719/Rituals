@@ -10,10 +10,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    # binding.pry
-     p '*' * 50
-    p session[:id]
-    p '*' * 50
+
+
 
     @user = User.find_by(id: params[:id])
     @memories = @user.memories
