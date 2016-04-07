@@ -46,11 +46,12 @@
             <li class="hidden">
               <a href="#page-top"></a>
             <li>
-              <%= link_to "Home", user_path(@user) %>
+              <%= link_to "Home", user_path(@user), :class => "gray_text" %>
             </li>
             </li>
             <li class="center"> Memories <span class="badge"> <%= @memories.count %> </span>
             </li>
+            <% if session[:id] && @memories.count > 0 && session[:id].to_s === params[:id].to_s %>
             <li>
               <a href="#" class="gray_text" role="button" data-toggle="modal" data-target="#new-memory-modal">Create a Memory</a>
             </li>
@@ -60,6 +61,20 @@
             <li>
               <a href="#" class="gray_text" role="button" data-toggle="modal" data-target="#new-member-modal">Add A Family Member</a>
             </li>
+            <% elsif session[:id] && @memories.count == 0 && session[:id].to_s === params[:id].to_s%>
+
+             <li>
+              <a href="#" class="gray_text animated infinite bounce" role="button" data-toggle="modal" data-target="#new-memory-modal">Create a Memory</a>
+            </li>
+            <li>
+              <a href="#" class="gray_text" role="button" data-toggle="modal" data-target="#family-modal">Family Members  <span class="badge"> <%= @user.families.count %> </span></a>
+            </li>
+            <li>
+              <a href="#" class="gray_text" role="button" data-toggle="modal" data-target="#new-member-modal">Add A Family Member</a>
+            </li>
+            <%end%>
+
+
             <li style="color:white">
               <%= link_to 'Logout', session_path(@user), method: :delete, data: { confirm: 'Are you sure?' }, :class => "gray_text" %>
             </li>
