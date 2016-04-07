@@ -6,15 +6,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="Author" content="Team Family">
+    <meta name="Description" content="Sharing our family description with you.">
 
     <title>Rituals</title>
 
-    <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
     <link href="css/grayscale.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
@@ -22,40 +19,9 @@
     <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 
-
     </head>
 
     <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-
-        <!-- Navigation -->
-        <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-                        <i class="fa fa-bars"></i>
-                    </button>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-                <ul class="nav navbar-nav">
-                    <!-- Hidden li included to remove active class from login link when scrolled up past login section -->
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#login">Login</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#download">Sign Up</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
     <!-- Intro Header -->
     <header class="intro">
         <div class="intro-body">
@@ -77,7 +43,7 @@
     <section id="login" class="container content-section text-center">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
-                <div class="text-center" style="padding:50px 0">
+                <div class="text-center" style="padding:50px">
                     <div class="logo"><h2>login</h2></div>
                     <!-- Main Form -->
                     <div class="login-form-1">
@@ -96,61 +62,61 @@
                                     <div class="form-group">
                                         <input type="submit" value="Login">
                                     </div>
-
-                                </form>
-                            </div>
-                            <!-- end:Main Form -->
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-            <!-- Register Section -->
-            <section id="download" class="content-section text-center">
-                <div class="download-section">
-                    <div class="container">
-                        <div class="col-lg-8 col-lg-offset-2">
-                            <!-- REGISTRATION FORM -->
-                            <div class="text-center" style="padding:50px 0">
-                                <div class="logo"><h2>Sign Up</h2></div>
-                                <!-- Main Form -->
-                                <div class="login-form-1">
-                                    <form id="register-form" class="text-left" action="/users" method='post'>
-                                        <div class="login-form-main-message"></div>
-                                        <div class="main-login-form">
-                                            <div class="login-group">
-                                                <div class="form-group">
-                                                    <label for="reg_fullname" class="sr-only">First Name</label>
-                                                    <input type="text" class="form-control" id="reg_fullname" name="user[first_name]" placeholder="first name">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="reg_fullname" class="sr-only">Last Name</label>
-                                                    <input type="text" class="form-control" id="reg_fullname" name="user[last_name]" placeholder="last name">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="reg_username" class="sr-only">Email address</label>
-                                                    <input type="text" class="form-control" id="reg_username" name="user[email]" placeholder="email">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="reg_password" class="sr-only">Password</label>
-                                                    <input type="password" class="form-control" id="reg_password" name="user[password]" placeholder="password">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="reg_password_confirm" class="sr-only">Password Confirm</label>
-                                                    <input type="password" class="form-control" id="reg_password_confirm" name="user[password_confirmation]" placeholder="confirm password">
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="submit" value="Sign Up">
-                                                </div>
-                                    </form>
                                 </div>
-                                <!-- end:Main Form -->
                             </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Register Section -->
+    <section id="download" class="content-section text-center">
+        <div class="download-section">
+            <div class="container">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <!-- REGISTRATION FORM -->
+                    <div class="text-center" style="padding:50px 0">
+                        <div class="logo"><h2>Sign Up</h2></div>
+                        <!-- Main Form -->
+                        <div class="login-form-1">
+                            <form id="register-form" class="text-left" action="/users" method='post'>
+                                <div class="login-form-main-message"></div>
+                                <div class="main-login-form">
+                                    <div class="login-group">
+                                        <div class="form-group">
+                                            <label for="reg_fullname" class="sr-only">First Name</label>
+                                            <input type="text" class="form-control" id="reg_fullname" name="user[first_name]" placeholder="first name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="reg_fullname" class="sr-only">Last Name</label>
+                                            <input type="text" class="form-control" id="reg_fullname" name="user[last_name]" placeholder="last name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="reg_username" class="sr-only">Email address</label>
+                                            <input type="text" class="form-control" id="reg_username" name="user[email]" placeholder="email">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="reg_password" class="sr-only">Password</label>
+                                            <input type="password" class="form-control" id="reg_password" name="user[password]" placeholder="password">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="reg_password_confirm" class="sr-only">Password Confirm</label>
+                                            <input type="password" class="form-control" id="reg_password_confirm" name="user[password_confirmation]" placeholder="confirm password">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="submit" value="Sign Up">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </div>
+    </section>
 
 
 

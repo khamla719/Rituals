@@ -1,129 +1,168 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+* or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any styles
+* defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+* file per style scope.
+*
+*= require_tree .
+*= require_self
+*/
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-
 body{
-  background-color: black !important;
-  margin:0;
-  padding:0;
+background-color: black !important;
+margin:0;
+padding:0;
 }
 
 .flipbook-viewport{
-  overflow:hidden;
-  width:100%;
-  height:100%;
+overflow:hidden;
+width:100%;
+height:100%;
 }
 
 .flipbook-viewport .container{
-  position:absolute;
-  top:50%;
-  left:50%;
-  margin:auto;
+position:absolute;
+top:50%;
+left:50%;
+margin:auto;
 }
 
 .flipbook-viewport .flipbook{
-  margin-top:30px;
-  width:922px;
-  height:600px;
-  left:-461px;
-  top:-300px;
+margin-top:30px;
+width:922px;
+height:600px;
+left:-461px;
+top:-300px;
 }
 
 .flipbook-viewport .page{
-  width:461px;
-  height:600px;
-  background-color:white;
-  background-image: url("http://farm4.static.flickr.com/3152/3067838594_6584c96035_o.jpg");
-  background-repeat:no-repeat;
-  background-size:100%;
+width:461px;
+height:600px;
+background-color:white;
+background-image: url("http://farm4.static.flickr.com/3152/3067838594_6584c96035_o.jpg");
+background-repeat:no-repeat;
+background-size:100%;
 }
 
 .flipbook .page{
-  -webkit-box-shadow:0 0 20px rgba(0,0,0,0.2);
-  -moz-box-shadow:0 0 20px rgba(0,0,0,0.2);
-  -ms-box-shadow:0 0 20px rgba(0,0,0,0.2);
-  -o-box-shadow:0 0 20px rgba(0,0,0,0.2);
-  box-shadow:0 0 20px rgba(0,0,0,0.2);
+-webkit-box-shadow:0 0 20px rgba(0,0,0,0.2);
+-moz-box-shadow:0 0 20px rgba(0,0,0,0.2);
+-ms-box-shadow:0 0 20px rgba(0,0,0,0.2);
+-o-box-shadow:0 0 20px rgba(0,0,0,0.2);
+box-shadow:0 0 20px rgba(0,0,0,0.2);
 }
 
 .flipbook-viewport .page img{
-  max-width: 100%;
-  max-height: 100%;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  margin:0;
+max-width: 100%;
+max-height: 100%;
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+margin:0;
 }
 
 .flipbook-viewport .shadow{
-  -webkit-transition: -webkit-box-shadow 0.5s;
-  -moz-transition: -moz-box-shadow 0.5s;
-  -o-transition: -webkit-box-shadow 0.5s;
-  -ms-transition: -ms-box-shadow 0.5s;
+-webkit-transition: -webkit-box-shadow 0.5s;
+-moz-transition: -moz-box-shadow 0.5s;
+-o-transition: -webkit-box-shadow 0.5s;
+-ms-transition: -ms-box-shadow 0.5s;
 
-  -webkit-box-shadow:0 0 20px #ccc;
-  -moz-box-shadow:0 0 20px #ccc;
-  -o-box-shadow:0 0 20px #ccc;
-  -ms-box-shadow:0 0 20px #ccc;
-  box-shadow:0 0 20px #ccc;
+-webkit-box-shadow:0 0 20px #ccc;
+-moz-box-shadow:0 0 20px #ccc;
+-o-box-shadow:0 0 20px #ccc;
+-ms-box-shadow:0 0 20px #ccc;
+box-shadow:0 0 20px #ccc;
 
 }
 
 .flipbook-viewport .flipbook .book {
-  background-image: url("http://img12.deviantart.net/1a4b/i/2010/012/1/c/grunge_red_cloth_book_by_techture.jpg");
+background-image: url("http://img12.deviantart.net/1a4b/i/2010/012/1/c/grunge_red_cloth_book_by_techture.jpg");
 }
 
 .center{
-  margin-top: 15px;
-  margin-right: 5px;
+margin-top: 15px;
+margin-right: 5px;
 }
 
-.gray_text{
-  color: green;
+a.gray_text {
+color: white;
 }
 
+li.center{
+ color: white;
+}
+
+
+
+a.gray_text:hover {
+color: gray;
+ background-color: inherit !important;
+ text-decoration: none;
+}
+li.center.hover {
+ color: gray;
+}
 .indent{
-  margin-left: 20px;
-  font-family: 'Tangerine', cursive;
+margin-left: 20px;
+margin-right: 15px;
+word-wrap: break-word;
+font-family: 'Tangerine', cursive;
 }
+
 p.indent{
-  font-size: 30px;
-  word-spacing: 5px;
-  line-height: 90%;
+font-size: 30px;
+word-spacing: 5px;
+line-height: 90%;
 
 }
 h1.indent {
-  font-weight: 900;
-  font-size: 40px;
+font-weight: 900;
+font-size: 40px;
 
 }
 #cover {
-  font-size: 60px;
-  font-weight: 2000;
-    color:  #D5AD6D; /*if no support for background-clip*/
+font-size: 60px;
+font-weight: 2000;
+color:  #D5AD6D; /*if no support for background-clip*/
+margin-top: 100px;
+margin-left: 0px;
+margin-right: 10px;
+text-align: center;
 
-  background: -webkit-linear-gradient(transparent, transparent),
-             -webkit-linear-gradient(top, rgba(213,173,109,1) 0%, rgba(213,173,109,1) 26%, rgba(226,186,120,1) 35%, rgba(163,126,67,1) 45%, rgba(145,112,59,1) 61%, rgba(213,173,109,1) 100%);
-  background: -o-linear-gradient(transparent, transparent);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+background: -webkit-linear-gradient(transparent, transparent),
+-webkit-linear-gradient(top, rgba(213,173,109,1) 0%, rgba(213,173,109,1) 26%, rgba(226,186,120,1) 35%, rgba(163,126,67,1) 45%, rgba(145,112,59,1) 61%, rgba(213,173,109,1) 100%);
+background: -o-linear-gradient(transparent, transparent);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
 }
+
+
+gray_text{
+  color: white;
+}
+
+.user-text{
+  font-family: 'Goudy Old Style', Garamond, 'Big Caslon', 'Times New Roman', serif;
+  font-size: 18px;
+  margin-left: 20px;
+  margin-right: 16px;
+}
+
+.modal_text_box {
+text-align: center;
+background-image: url("http://farm4.static.flickr.com/3152/3067838594_6584c96035_o.jpg");
+}
+
+
