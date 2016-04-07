@@ -1,48 +1,204 @@
-<!doctype html>
-<!--[if lt IE 7 ]> <html lang="en" class="ie6"> <![endif]-->
-<!--[if IE 7 ]>    <html lang="en" class="ie7"> <![endif]-->
-<!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]-->
-<!--[if IE 9 ]>    <html lang="en" class="ie9"> <![endif]-->
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
 
 
+      <!-- BEGIN # MODAL Create a Memory -->
+      <div class="modal fade" id="new-memory-modal" tabindex="-1" role="dialog" aria labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+          <div class="modal-content modal_text_box"  style="background-color: black">
 
-<%= link_to 'New Memory', new_user_memory_path(@user) %>
 
-<div class="flipbook-viewport">
-  <div class="container">
-    <div class="flipbook">
-      <div>
-      <h1> <%=@user.first_name.capitalize  + "'s" + " memories"%></h1>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+              </button>
+
+
+            <div id="div-forms">
+              <form action="/users/<%= @user.id %>/memories" method="post" id="login-form">
+                <div class="modal-body">
+                  <div id="div-login-msg">
+                  </div>
+                  <div class="form-group">
+                    <label for='login_username' style="text-align: center; display: block; color: black; font-family: 'Tangerine', cursive; font-size: 30px">Title of Your Memory </label>
+                    <input class="form-control" type='text' name='memory[title]'>
+                  </div>
+
+                  <div class="form-group">
+                    <label for='description'  style="text-align: center; display: block; color: black; font-family: 'Tangerine', cursive; font-size: 30px">URL </label>
+                    <input class="form-control" type='text' name='memory[url]'>
+                  </div>
+
+                  <div class="form-group">
+                    <label for='start_date'  style="text-align: center; display: block; color: black; font-family: 'Tangerine', cursive; font-size: 30px">Description </label>
+                    <input class="form-control" type='textarea' name='memory[description]'>
+                  </div>
+                  <div>
+                    <label for='story'  style="text-align: center; display: block; color: black; font-family: 'Tangerine', cursive; font-size: 30px">Story </label><br>
+                    <textarea cols="50" rows="10" name="memory[story]" text-align="left"></textarea>
+                    <br>
+                    <label for="private?"  style="text-align: center; display: block; color: black; font-family: 'Tangerine', cursive; font-size: 30px">Privacy </label>
+                    <input class="secure" type="radio" name="memory[private]" value="true" checked > Private<br>
+                    <input type="radio" name="memory[private]" value="false" > Public<br>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <div>
+                    <button type="submit" class="btn  btn-lg btn-block modal_text_box" style="color: black; font: 50px Tangerine">Create Memory</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
- <% @memories.each do |memory| %>
-      <div>
-      <h1> Story </h1>
-         <p><%= memory.story %></p>
-      </div>
-      <div>
-      <h1> <%= memory.title.capitalize %></h1>
-      <br>
-      <% if memory.url %>
-      Url: <img src="<%=memory.url%>" alt="image of story">
-      <% end %>
-      <br>
-      Description: <p><%= memory.description %></p>
-      <br>
-        <td><%= link_to 'Edit', edit_user_memory_path(@user, memory) %></td>
-        <td><%= link_to 'Destroy', user_memory_path(@user, memory), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </div>
-      <% end %>
+    </body>
 
 
+
+
+
+    <!-- BEGIN # MODAL Family -->
+    <div class="modal fade" id="family-modal" tabindex="-1" role="dialog" aria labelledby="myModalLabel" aria-hidden="true" >
+
+      <div class="modal-dialog">
+        <div class="modal-content" style="background-color: black">
+
+          <div class="modal-header" align="center">
+               <h1 style="color: white; font-family: 'Tangerine', cursive;"> Your Family Members </h1>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+            </button>
+          </div>
+
+          <div id="div-forms">
+
+<% @user.families.each do |family_member| %>
+  <div class="col-md-13">
+    <div class="list-group-item modal_text_box" ;>
+      <a href="/users/<%=family_member.id%>" style="color: black; font-size: 30px; font-family: 'Tangerine', cursive;"> <%=family_member.first_name%></a>
     </div>
   </div>
-</div>
+<% end %>
+<div class="modal-footer">
+
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
-<script type="text/javascript">
+      <!-- BEGIN # MODAL Add Family Modal -->
+    <div class="modal fade" id="new-member-modal" tabindex="-1" role="dialog" aria labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+      <div class="modal-dialog">
+        <div class="modal-content" style="background-color: black">
+          <div class="modal-header" align="center">
+           <h1 style="font-size: 50px; color: white; font-family: 'Tangerine', cursive;"> Add Family Member</h1>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 
-function loadApp() {
+            </button>
+          </div>
+
+          <div id="div-forms">
+
+            <form action="/users/<%= @user.id %>/memberships" method="post" id="new-membership-form">
+                <div class="modal-body">
+                  <div id="div-login-msg">
+                  </div>
+                  <div class="form-group">
+                    <label for='login_username' style="color: white; font-family: 'Tangerine', cursive; font-size: 30px"  >Email: </label>
+                    <input class="form-control" type='text' name='email'>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <div>
+                    <button type="submit" class="btn  btn-lg btn-block modal_text_box" style="color: black; font: 50px Tangerine">Add to Family</button>
+                  </div>
+                </div>
+              </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+  <div class="flipbook-viewport">
+    <div class="container">
+      <div class="flipbook animated fadeInUpBig">
+        <div class="hard book">
+          <h1 id="cover" class="indent"><%=@user.first_name.capitalize  + "'s" + " memories"%></h1>
+        </div>
+
+        <div class="hard book">
+        </div>
+
+        <div class='page-wrapper'>
+          <br>
+          <p class="indent">Dedicated to the wonderful people in my life</p>
+        </div>
+          <% @memories.each do |memory| %>
+        <div class='page-wrapper'>
+          <h1 class="indent"> Story </h1>
+          <p class="user-text"><%= memory.story %></p>
+        </div>
+        <div class="page-wrapper new-memory">
+          <h1 class="indent"> <%= memory.title.capitalize %></h1>
+          <br>
+          <% if memory.url %>
+          <p class="indent">
+            <iframe width="420" height="315" src="<%= memory.url %>" frameborder="0" allowfullscreen></iframe>
+          </p>
+          <%end%>
+          <br>
+          <p class="indent">
+          <p class= "user-text"><%= memory.description %></p>
+          </p>
+          <br>
+
+          <!-- If memory does not belong to user's family member's, they cannot share -->
+          <%current_user.families.each do |family_member| %>
+            <%if memory.user_id == family_member.id %>
+              <p class= "indent">
+                <%= link_to 'Share', share_index_path(memory), method: :post %>
+              </p>
+            <%end%>
+          <%end%>
+
+
+          <!-- If it is not the User's book, no auth for memories -->
+          <% if memory.user_id == session[:id] %>
+          <p class= "indent">
+            <td><%= link_to 'Edit', edit_user_memory_path(@user, memory) %></td>
+            <td><%= link_to 'Remove', user_memory_path(@user, memory), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </p>
+          <%end%>
+
+
+        </div>
+
+        <% end %>
+
+        <div class = "paper-wrapper" id='last-page'>
+        </div>
+        <div class= "book hard">
+        </div>
+        <div class="book hard">
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+
+    function loadApp() {
 
   // Create the flipbook
 
@@ -67,13 +223,15 @@ function loadApp() {
 
       autoCenter: true
 
-  });
+    });
 }
 
 // Load the HTML4 version if there's not CSS transform
 
 yepnope({
   test : Modernizr.csstransforms,
+
+  // Tests changed to speed up book
   // yep: ['../../assets/javascripts/turn.js'],
   // nope: ['../../assets/javascripts/turn.html4.min.js'],
   // both: ['../../basic/css/basic.css'],
@@ -81,5 +239,4 @@ yepnope({
 });
 
 </script>
-
 
