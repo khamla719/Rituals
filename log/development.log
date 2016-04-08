@@ -50827,3 +50827,381 @@ Processing by UsersController#show as HTML
   [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 2]]
   [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1[0m  [["user_id", 2]]
 Completed 200 OK in 51ms (Views: 49.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1" for ::1 at 2016-04-08 10:11:39 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (6.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (6.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mMemory Load (0.2ms)[0m  SELECT "memories".* FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1  [["user_id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1  [["user_id", 2]]
+  Rendered users/show.html.erb within layouts/application (34.3ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 1]]
+Completed 200 OK in 581ms (Views: 491.7ms | ActiveRecord: 45.3ms)
+
+
+Started GET "/users/2" for ::1 at 2016-04-08 10:12:41 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35mMemory Load (0.2ms)[0m  SELECT "memories".* FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 2]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1  [["user_id", 2]]
+  Rendered users/show.html.erb within layouts/application (2.8ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 2]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1[0m  [["user_id", 2]]
+Completed 200 OK in 54ms (Views: 51.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/1" for ::1 at 2016-04-08 10:16:29 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mMemory Load (0.1ms)[0m  SELECT "memories".* FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1  [["user_id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1  [["user_id", 2]]
+  Rendered users/show.html.erb within layouts/application (3.6ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 1]]
+Completed 200 OK in 58ms (Views: 55.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/2" for ::1 at 2016-04-08 10:16:31 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35mMemory Load (0.2ms)[0m  SELECT "memories".* FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 2]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1  [["user_id", 2]]
+  Rendered users/show.html.erb within layouts/application (3.4ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 2]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1[0m  [["user_id", 2]]
+Completed 200 OK in 67ms (Views: 63.8ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/users/1" for ::1 at 2016-04-08 10:16:34 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mMemory Load (0.2ms)[0m  SELECT "memories".* FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1  [["user_id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1  [["user_id", 2]]
+  Rendered users/show.html.erb within layouts/application (4.5ms)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 1]]
+Completed 200 OK in 62ms (Views: 59.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/users/2" for ::1 at 2016-04-08 10:16:53 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35mMemory Load (0.2ms)[0m  SELECT "memories".* FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 2]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1  [["user_id", 2]]
+  Rendered users/show.html.erb within layouts/application (2.6ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 2]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1[0m  [["user_id", 2]]
+Completed 200 OK in 55ms (Views: 52.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/1" for ::1 at 2016-04-08 11:15:34 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mMemory Load (0.1ms)[0m  SELECT "memories".* FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1  [["user_id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1  [["user_id", 2]]
+  Rendered users/show.html.erb within layouts/application (4.4ms)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 1]]
+Completed 200 OK in 65ms (Views: 62.9ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users/1" for ::1 at 2016-04-08 11:17:20 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mMemory Load (0.1ms)[0m  SELECT "memories".* FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1  [["user_id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1  [["user_id", 2]]
+  Rendered users/show.html.erb within layouts/application (5.0ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 1]]
+Completed 200 OK in 56ms (Views: 54.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/memorymodal.self-a9f8d6858ce74fc22ed33689184bfed560ea71cba5c8b0f9942a898201f20242.css?body=1" for ::1 at 2016-04-08 11:17:20 -0700
+
+
+Started GET "/assets/scaffolds.self-0acf96d5e490a3bcdb5465b6513724ef2dd033d85f48d37a046059a185289e5b.css?body=1" for ::1 at 2016-04-08 11:17:20 -0700
+
+
+Started GET "/assets/application.self-8d6d832d510aa2431f6eed3e1e63905be5adb6ee67e7d13c338494d48f6497b5.css?body=1" for ::1 at 2016-04-08 11:17:20 -0700
+
+
+Started GET "/assets/weclome.self-abd7d116c59bc794f7e1babc4a1904bb4512de96a57213d15bb393052f7666c6.css?body=1" for ::1 at 2016-04-08 11:17:20 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-04-08 11:17:20 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-04-08 11:17:20 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-04-08 11:17:20 -0700
+
+
+Started GET "/assets/jquery.min.1.7.self-3aaec250fd2cd4ea615eb7dd0bbc3509cc4f4390afdf4915ca25ba75428d4277.js?body=1" for ::1 at 2016-04-08 11:17:20 -0700
+
+
+Started GET "/assets/modernizr.2.5.3.min.self-f13fba014c337df90f9166c999c450529c727c850b324865a6dba1eff6e99e83.js?body=1" for ::1 at 2016-04-08 11:17:20 -0700
+
+
+Started GET "/assets/memorymodal.self-5c480b4fc891c944c04ae390a08b8603f888a5ca1b714daa9c1a164c2c2d9095.js?body=1" for ::1 at 2016-04-08 11:17:20 -0700
+
+
+Started GET "/assets/components.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.js?body=1" for ::1 at 2016-04-08 11:17:20 -0700
+
+
+Started GET "/assets/turn.self-0aeadb61d580594cd16488607409c2b7078f83661d5eff7765bda4e829427003.js?body=1" for ::1 at 2016-04-08 11:17:20 -0700
+
+
+Started GET "/assets/turn.min.self-5f7b2e351ff0c58c354e581cfdc1ae45e6a19403ebeef4cb900c4d86457756f4.js?body=1" for ::1 at 2016-04-08 11:17:20 -0700
+
+
+Started GET "/assets/whatever.self-7503576f4f7845956cee6ecef1480197920f896b679e4e0a2d80b5cfaf7b3bf7.js?body=1" for ::1 at 2016-04-08 11:17:20 -0700
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for ::1 at 2016-04-08 11:17:20 -0700
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for ::1 at 2016-04-08 11:17:20 -0700
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for ::1 at 2016-04-08 11:17:20 -0700
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for ::1 at 2016-04-08 11:17:20 -0700
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for ::1 at 2016-04-08 11:17:21 -0700
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for ::1 at 2016-04-08 11:17:21 -0700
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for ::1 at 2016-04-08 11:17:21 -0700
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for ::1 at 2016-04-08 11:17:21 -0700
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for ::1 at 2016-04-08 11:17:21 -0700
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for ::1 at 2016-04-08 11:17:21 -0700
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for ::1 at 2016-04-08 11:17:21 -0700
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for ::1 at 2016-04-08 11:17:21 -0700
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for ::1 at 2016-04-08 11:17:21 -0700
+
+
+Started GET "/assets/application.self-91ebb571b23695956ede9614fdd513f3c94fd69882852235f79bf7294baefa73.js?body=1" for ::1 at 2016-04-08 11:17:21 -0700
+
+
+Started POST "/share.10" for ::1 at 2016-04-08 11:19:36 -0700
+Processing by ShareController#create as 
+  Parameters: {"authenticity_token"=>"XU05MWH4Wb0UlCruH/0szptqy30QPi9anP3sWboCOm8+5Zwex+ey+tQqM7gTP9kVfgMe7vg5ttnuPDJx1obKjg=="}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mMemory Load (0.2ms)[0m  [1mSELECT  "memories".* FROM "memories" WHERE "memories"."id" = $1 LIMIT 1[0m  [["id", 10]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (24.1ms)[0m  [1mINSERT INTO "memories" ("title", "url", "description", "story", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Mom's Shrimp Laab"], ["url", "https://www.youtube.com/embed/yEQo9vrH-qA"], ["description", "My Favorite Dish on Family Holidays"], ["story", "Every Lao and Thai family has their unique version of Laab. My mother made this dish during family holiday events. The aroma of Thai basil and roasted rice is like time traveling to when I was young. \r\n\r\nIngrediants: minced cooked shrimp, lime, roasted rice, thai basil, sea salt, ground pepper, mint, cilantro... and most importantly, a healthy serving of Mom's love!"], ["user_id", 2], ["created_at", "2016-04-08 18:19:36.610591"], ["updated_at", "2016-04-08 18:19:36.610591"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 33ms (ActiveRecord: 25.5ms)
+
+
+Started GET "/users/2" for ::1 at 2016-04-08 11:19:36 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35mMemory Load (0.1ms)[0m  SELECT "memories".* FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 2]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1  [["user_id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1  [["user_id", 2]]
+  Rendered users/show.html.erb within layouts/application (3.7ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 2]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1[0m  [["user_id", 2]]
+Completed 200 OK in 59ms (Views: 56.7ms | ActiveRecord: 0.9ms)
+
+
+Started DELETE "/users/2/memories/11" for ::1 at 2016-04-08 11:26:35 -0700
+Processing by MemoriesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"xnnKjCZJj0pV7lOE6Iiud+Xos1cZeNCxqLuBx+yVBdal0W+jgFZkDZVQStLkSlusAIFmxPF/STLael/vgBH1Nw==", "user_id"=>"2", "id"=>"11"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mMemory Load (0.2ms)[0m  [1mSELECT  "memories".* FROM "memories" WHERE "memories"."id" = $1 LIMIT 1[0m  [["id", 11]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "memories" WHERE "memories"."id" = $1[0m  [["id", 11]]
+  [1m[35m (9.4ms)[0m  COMMIT
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 13ms (ActiveRecord: 10.0ms)
+
+
+Started GET "/users/2" for ::1 at 2016-04-08 11:26:35 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1  [["user_id", 2]]
+  [1m[36mMemory Load (0.1ms)[0m  [1mSELECT "memories".* FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1[0m  [["user_id", 2]]
+  Rendered users/show.html.erb within layouts/application (2.5ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1  [["user_id", 2]]
+Completed 200 OK in 63ms (Views: 60.7ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/users/1" for ::1 at 2016-04-08 11:32:07 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1  [["user_id", 1]]
+  [1m[36mMemory Load (0.1ms)[0m  [1mSELECT "memories".* FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35mCACHE (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1[0m  [["user_id", 2]]
+  Rendered users/show.html.erb within layouts/application (3.7ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 1]]
+Completed 200 OK in 55ms (Views: 52.9ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/share.10" for ::1 at 2016-04-08 11:32:46 -0700
+Processing by ShareController#create as 
+  Parameters: {"authenticity_token"=>"YR+3E9cDhCcwhz/7VfR7V8mQAb9OeuE4UYzelXQIGyUCtxI8cRxvYPA5Jq1ZNo6MLPnULKZ9eLsjTQC9GIzrxA=="}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mMemory Load (0.2ms)[0m  SELECT  "memories".* FROM "memories" WHERE "memories"."id" = $1 LIMIT 1  [["id", 10]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "memories" ("title", "url", "description", "story", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["title", "Mom's Shrimp Laab"], ["url", "https://www.youtube.com/embed/yEQo9vrH-qA"], ["description", "My Favorite Dish on Family Holidays"], ["story", "Every Lao and Thai family has their unique version of Laab. My mother made this dish during family holiday events. The aroma of Thai basil and roasted rice is like time traveling to when I was young. \r\n\r\nIngrediants: minced cooked shrimp, lime, roasted rice, thai basil, sea salt, ground pepper, mint, cilantro... and most importantly, a healthy serving of Mom's love!"], ["user_id", 2], ["created_at", "2016-04-08 18:32:46.193880"], ["updated_at", "2016-04-08 18:32:46.193880"]]
+  [1m[36m (1.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 6ms (ActiveRecord: 2.5ms)
+
+
+Started GET "/users/2" for ::1 at 2016-04-08 11:32:46 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1  [["user_id", 2]]
+  [1m[36mMemory Load (0.1ms)[0m  [1mSELECT "memories".* FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1[0m  [["user_id", 2]]
+  Rendered users/show.html.erb within layouts/application (3.7ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1  [["user_id", 2]]
+Completed 200 OK in 57ms (Views: 55.1ms | ActiveRecord: 1.2ms)
+
+
+Started DELETE "/users/2/memories/12" for ::1 at 2016-04-08 11:38:18 -0700
+Processing by MemoriesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"qsngcdSHjC71U3HdNuOrV5TyEzjCSBtdn+dwOq1OLDPJYUVecphnaTXtaIs6IV6McZvGqypPgt7tJq4Swcrc0g==", "user_id"=>"2", "id"=>"12"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mMemory Load (0.2ms)[0m  SELECT  "memories".* FROM "memories" WHERE "memories"."id" = $1 LIMIT 1  [["id", 12]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "memories" WHERE "memories"."id" = $1  [["id", 12]]
+  [1m[36m (1.8ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 4ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/users/2" for ::1 at 2016-04-08 11:38:18 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35mMemory Load (0.3ms)[0m  SELECT "memories".* FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 2]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1  [["user_id", 2]]
+  Rendered users/show.html.erb within layouts/application (4.5ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 2]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1[0m  [["user_id", 2]]
+Completed 200 OK in 70ms (Views: 67.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/users/1" for ::1 at 2016-04-08 11:38:53 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mMemory Load (0.1ms)[0m  SELECT "memories".* FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1  [["user_id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1  [["user_id", 2]]
+  Rendered users/show.html.erb within layouts/application (3.7ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 1]]
+Completed 200 OK in 58ms (Views: 56.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/2" for ::1 at 2016-04-08 11:39:07 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35mMemory Load (0.2ms)[0m  SELECT "memories".* FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 2]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1  [["user_id", 2]]
+  Rendered users/show.html.erb within layouts/application (2.9ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1[0m  [["user_id", 2]]
+Completed 200 OK in 67ms (Views: 65.0ms | ActiveRecord: 0.9ms)
