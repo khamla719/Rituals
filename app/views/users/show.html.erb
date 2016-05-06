@@ -1,48 +1,15 @@
-      <nav class="navbar navbar-custom navbar-fixed-top animated fadeIn" role="navigation" style="background-color:black;">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-              <i class="fa fa-bars"></i>
-            </button>
-          </div>
 
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-            <ul class="nav navbar-nav">
-              <!-- Hidden li included to remove active class from login link when scrolled up past login section -->
-              <li class="hidden">
-                <a href="#page-top"></a>
-              </li>
-              <li class="center">
-                Memories <span class="badge"> <%= @memories.count %> </span>
-              </li>
-              <li>
-
-                <a href="#" class="gray_text" role="button" data-toggle="modal" data-target="#family-modal">Family Members  <span class="badge"> <%= @user.families.count %> </span>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="gray_text" role="button" data-toggle="modal" data-target="#login-modal">Create a Memory</a>
-              </li>
-              <li>
-                <%= link_to 'Logout', session_path(@user), method: :delete, data: { confirm: 'Are you sure?' } %>
-              </li>
-            </ul>
-          </div>
-          <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-      </nav>
-
+<div class="backgrounding">
       <!-- BEGIN # MODAL Create a Memory -->
-      <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+      <div class="modal fade" id="new-memory-modal" tabindex="-1" role="dialog" aria labelledby="myModalLabel" aria-hidden="true" style="display: none;">
         <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header" align="center">
+          <div class="modal-content "  style="background-color: black">
+
+
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+
               </button>
-            </div>
+
 
             <div id="div-forms">
               <form action="/users/<%= @user.id %>/memories" method="post" id="login-form">
@@ -50,31 +17,34 @@
                   <div id="div-login-msg">
                   </div>
                   <div class="form-group">
-                    <label for='login_username'>Title of Your Memory: </label>
+                    <label for='login_username' style="text-align: center; display: block; color: white; font-family: 'Tangerine', cursive; font-size: 30px">Title of Your Memory </label>
                     <input class="form-control" type='text' name='memory[title]'>
                   </div>
 
                   <div class="form-group">
-                    <label for='description'>URL of Image: </label>
+                    <label for='description'  style="text-align: center; display: block; color: white; font-family: 'Tangerine', cursive; font-size: 30px">URL </label>
                     <input class="form-control" type='text' name='memory[url]'>
                   </div>
 
                   <div class="form-group">
-                    <label for='start_date'>Description: </label>
+                    <label for='start_date'  style="text-align: center; display: block; color: white; font-family: 'Tangerine', cursive; font-size: 30px">Description </label>
                     <input class="form-control" type='textarea' name='memory[description]'>
                   </div>
                   <div>
-                    <label for='story'>Story: </label><br>
+                    <label for='story'  style="text-align: center; display: block; color: white; font-family: 'Tangerine', cursive; font-size: 30px">Story </label><br>
                     <textarea cols="50" rows="10" name="memory[story]" text-align="left"></textarea>
                     <br>
-                    <label for="private?">Privacy: </label><br>
-                    <input type="radio" name="memory[private]" value="true" checked> Private?<br>
-                    <input type="radio" name="memory[private]" value="false"> Public?<br>
+                    <label for="private?"  style="text-align: center; display: block; color: white; font-family: 'Tangerine', cursive; font-size: 30px">Privacy </label>
+                    <input class="secure" type="radio" name="memory[private]" value="true" checked >
+                    <label style="color:white">Private</label><br>
+                    <input type="radio" name="memory[private]" value="false" >
+                    <label style="color:white">Public</label>
+                    <br>
                   </div>
                 </div>
                 <div class="modal-footer">
                   <div>
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">Create Memory</button>
+                    <button type="submit" class="btn  btn-lg btn-block modal_text_box" style="color: black; font: 50px Tangerine">Create Memory</button>
                   </div>
                 </div>
               </form>
@@ -89,30 +59,75 @@
 
 
     <!-- BEGIN # MODAL Family -->
-    <div class="modal fade" id="family-modal" tabindex="-1" role="dialog" aria labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal fade" id="family-modal" tabindex="-1" role="dialog" aria labelledby="myModalLabel" aria-hidden="true" >
+
       <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" style="background-color: black">
+
           <div class="modal-header" align="center">
+               <h1 style="color: white; font-family: 'Tangerine', cursive;"> Your Family Members </h1>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+
             </button>
           </div>
 
           <div id="div-forms">
-            <h1> Your Family Members </h1>
-            <ul>
-              <% @user.families.each do |family_member| %>
 
-              <li><a href="<%=family_member.id%>"><%= family_member.first_name %></a></li>
-              <%end%>
-            </ul>
+<% @user.families.each do |family_member| %>
+  <div class="col-md-13">
+    <div class="list-group-item modal_text_box" ;>
+      <a href="/users/<%=family_member.id%>" style="color: black; font-size: 30px; font-family: 'Tangerine', cursive;"> <%=family_member.first_name%></a>
+    </div>
+  </div>
+<% end %>
+<div class="modal-footer">
+
+                </div>
           </div>
         </div>
       </div>
     </div>
-  </body>
 
 
+      <!-- BEGIN # MODAL Add Family Modal -->
+    <div class="modal fade" id="new-member-modal" tabindex="-1" role="dialog" aria labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+      <div class="modal-dialog">
+        <div class="modal-content" style="background-color: black">
+          <div class="modal-header" align="center">
+           <h1 style="font-size: 50px; color: white; font-family: 'Tangerine', cursive;"> Add Family Member</h1>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+            </button>
+          </div>
+
+          <div id="div-forms">
+
+            <form action="/users/<%= @user.id %>/memberships" method="post" id="new-membership-form">
+                <div class="modal-body">
+                  <div id="div-login-msg">
+                  </div>
+                  <div class="form-group">
+                    <label for='login_username' style="color: white; font-family: 'Tangerine', cursive; font-size: 30px"  >Email: </label>
+                    <input class="form-control" type='text' name='email'>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <div>
+                    <button type="submit" class="btn  btn-lg btn-block modal_text_box" style="color: black; font: 50px Tangerine">Add to Family</button>
+                  </div>
+                </div>
+              </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<div id="bg">
+  <img src="http://wapphouse.xyz/wp-content/uploads/2016/02/dark-wood-background.jpg" alt="">
+
+</div>
 
 
 
@@ -123,46 +138,50 @@
     <div class="container">
       <div class="flipbook animated fadeInUpBig">
         <div class="hard book">
-          <h1 id= "cover" class="indent "><%=@user.first_name.capitalize  + "'s" + " memories"%></h1>
+          <h1 id="cover" class="indent"><%=@user.first_name.capitalize  + "'s" + " memories"%></h1>
         </div>
+
         <div class="hard book">
         </div>
+
         <div class='page-wrapper'>
           <br>
           <p class="indent">Dedicated to the wonderful people in my life</p>
         </div>
-        <% @memories.each do |memory| %>
+          <% @memories.each do |memory| %>
         <div class='page-wrapper'>
           <h1 class="indent"> Story </h1>
-          <p class="indent"><%= memory.story %></p>
+          <p class="user-text"><%= memory.story %></p>
         </div>
-        <div class="page-wrapper">
+        <div class="page-wrapper new-memory">
           <h1 class="indent"> <%= memory.title.capitalize %></h1>
           <br>
           <% if memory.url %>
-          <p class="indent">
-            Url: <img src="<%=memory.url%>" alt="image of story">
-          </p>
+            <p class="indent">
+              <iframe width="420" height="315" src="<%= memory.url %>" frameborder="0" allowfullscreen></iframe>
+            </p>
           <%end%>
           <br>
           <p class="indent">
-          Description: <p class= "indent"><%= memory.description %></p>
+          <p class= "user-text"><%= memory.description %></p>
           </p>
           <br>
 
           <!-- If memory does not belong to user's family member's, they cannot share -->
           <%current_user.families.each do |family_member| %>
-          <%if memory.user_id == family_member.id %>
-          <%= link_to 'Share', share_index_path(memory), method: :post %>
-          <%end%>
+            <%if memory.user_id == family_member.id %>
+              <p class= "indent">
+                <%= link_to 'Share', share_index_path(memory), method: :post %>
+              </p>
+            <%end%>
           <%end%>
 
 
           <!-- If it is not the User's book, no auth for memories -->
           <% if memory.user_id == session[:id] %>
           <p class= "indent">
-          <td><%= link_to 'Edit', edit_user_memory_path(@user, memory) %></td>
-          <td><%= link_to 'Remove', user_memory_path(@user, memory), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Edit', edit_user_memory_path(@user, memory) %></td>
+            <td><%= link_to 'Remove', user_memory_path(@user, memory), method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </p>
           <%end%>
 
@@ -170,7 +189,8 @@
         </div>
 
         <% end %>
-        <div class = "paper-wrapper">
+
+        <div class = "paper-wrapper" id='last-page'>
         </div>
         <div class= "book hard">
         </div>
@@ -225,4 +245,6 @@ yepnope({
 });
 
 </script>
+
+
 
