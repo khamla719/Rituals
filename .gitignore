@@ -1,6 +1,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+tmp/
 # Compiled source #
 ###################
 *.com
