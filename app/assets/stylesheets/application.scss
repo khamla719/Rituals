@@ -23,6 +23,8 @@ margin:0;
 padding:0;
 }
 
+
+
 .flipbook-viewport{
 overflow:hidden;
 width:100%;
@@ -50,7 +52,7 @@ height:600px;
 background-color:white;
 background-image: url("http://farm4.static.flickr.com/3152/3067838594_6584c96035_o.jpg");
 background-repeat:no-repeat;
-background-size:100%;
+background-size:100% 100%;
 }
 
 .flipbook .page{
@@ -104,7 +106,9 @@ li.center{
  color: white;
 }
 
-
+a.gray_text.animated{
+  color:darkgoldenrod;
+}
 
 a.gray_text:hover {
 color: gray;
@@ -158,4 +162,28 @@ gray_text{
   font-size: 18px;
   margin-left: 20px;
   margin-right: 16px;
+}
+
+.modal_text_box {
+text-align: center;
+background-image: url("http://www.wallpaperup.com/uploads/wallpapers/2013/12/11/191759/big_thumb_ae5fb76ec7d4e6e611258b64cb4ed5fb.jpg");
+}
+
+
+#bg {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+}
+#bg img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  min-width: 50%;
+  min-height: 50%;
 }
