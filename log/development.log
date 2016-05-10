@@ -51782,3 +51782,925 @@ ActionController::RoutingError (No route matches [GET] "/css/bootstrap.min.css.m
   Rendered /Users/Aaron/.rbenv/versions/2.2.1/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
   Rendered /Users/Aaron/.rbenv/versions/2.2.1/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
   Rendered /Users/Aaron/.rbenv/versions/2.2.1/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (437.4ms)
+  [1m[36m (0.8ms)[0m  [1mCREATE DATABASE "rituals_development" ENCODING = 'unicode'[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (4.5ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'memberships'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (2.5ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'memories'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (1.5ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[36m (119.5ms)[0m  [1mDROP DATABASE IF EXISTS "rituals_development"[0m
+  [1m[35m (589.7ms)[0m  CREATE DATABASE "rituals_development" ENCODING = 'unicode'
+  [1m[36mSQL (1.7ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (15.6ms)[0m  CREATE TABLE "memberships" ("id" serial primary key, "user_id" integer, "family_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (3.2ms)[0m  [1mCREATE TABLE "memories" ("id" serial primary key, "title" character varying, "url" character varying, "description" text, "story" text, "private" boolean DEFAULT 't', "user_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.2ms)[0m  CREATE  INDEX  "index_memories_on_user_id" ON "memories" USING btree ("user_id")
+  [1m[36m (3.8ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "email" character varying, "first_name" character varying, "last_name" character varying, "password_digest" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (7.0ms)[0m  ALTER TABLE "memories" ADD CONSTRAINT "fk_rails_80ff95ac61"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+
+  [1m[36m (1.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (1.1ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.8ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (1.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160403190513')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160402164759')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160402164910')
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "password_digest", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Mr. Jamey Hayes"], ["last_name", "Crooks"], ["password_digest", "$2a$10$opwQvXlKMpXhkbKNLRHwz.qdDjxAV3VQC5PVVxSiTUAt0uq.d5rca"], ["email", "jared@mcdermott.co"], ["created_at", "2016-05-10 22:57:04.693035"], ["updated_at", "2016-05-10 22:57:04.693035"]]
+  [1m[35m (0.9ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "password_digest", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "Arielle Hagenes"], ["last_name", "Maggio"], ["password_digest", "$2a$10$YZ8i0PLjkZLQVE1wcCuFLOevN0JCvaPfCdwLvulHR2HYBCseJGuTS"], ["email", "rae.kaulke@skileskilback.com"], ["created_at", "2016-05-10 22:57:04.757007"], ["updated_at", "2016-05-10 22:57:04.757007"]]
+  [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "password_digest", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Dayne Swaniawski"], ["last_name", "Wilkinson"], ["password_digest", "$2a$10$IrW2dcRmIQsZt2meOsqlVOEc7N7Z31NTYcy2l1MM7qAoEtY9QLJXG"], ["email", "charlie@torphy.info"], ["created_at", "2016-05-10 22:57:04.821445"], ["updated_at", "2016-05-10 22:57:04.821445"]]
+  [1m[35m (1.2ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "password_digest", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "Turner Rosenbaum"], ["last_name", "Lehner"], ["password_digest", "$2a$10$4u6BlY0WDKtWosI2bMt4Z.PCvJPjM57XCNv5T3/tqUQssFX54WTIW"], ["email", "jaeden@kuhlmanpredovic.name"], ["created_at", "2016-05-10 22:57:04.884261"], ["updated_at", "2016-05-10 22:57:04.884261"]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "password_digest", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Charlie Paucek"], ["last_name", "Boyle"], ["password_digest", "$2a$10$I47AfzgL4kF4PQw1evOyjOjr4K4wF4pRdE64QUyw5WtzRNBl8IIWC"], ["email", "augustine.mcclure@bahringer.biz"], ["created_at", "2016-05-10 22:57:04.946406"], ["updated_at", "2016-05-10 22:57:04.946406"]]
+  [1m[35m (1.2ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "password_digest", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "Fae Jacobi"], ["last_name", "Walter"], ["password_digest", "$2a$10$xxVVwIWGjY20DOI.mbQ4h.kobWH6fhmmOCiiAvXw.3k4yEl2LESKu"], ["email", "jasen@mosciski.io"], ["created_at", "2016-05-10 22:57:05.011633"], ["updated_at", "2016-05-10 22:57:05.011633"]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "password_digest", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Mr. Justus Dickens"], ["last_name", "Raynor"], ["password_digest", "$2a$10$qaWnD5vrpA4GgskBFauubOtmRVhq4U.hqdf..6nAIyUMRMig9XAyC"], ["email", "brandyn_mitchell@gerlach.com"], ["created_at", "2016-05-10 22:57:05.073949"], ["updated_at", "2016-05-10 22:57:05.073949"]]
+  [1m[35m (1.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("first_name", "last_name", "password_digest", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "Christina Hudson"], ["last_name", "Hackett"], ["password_digest", "$2a$10$BEeu5njDM29hSsLcp91ZGOSEtZJzgfExuyQXpy91nyN5E3wEcPvNK"], ["email", "leonel_swift@vonrueden.name"], ["created_at", "2016-05-10 22:57:05.142528"], ["updated_at", "2016-05-10 22:57:05.142528"]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "password_digest", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Brett Kuhn"], ["last_name", "Purdy"], ["password_digest", "$2a$10$avvr8yCRNqa7prMGZGFXsu7rdKUIA50BdH9FR5nlnU34xWIv5Wnky"], ["email", "donnie_farrell@nikolaus.com"], ["created_at", "2016-05-10 22:57:05.207343"], ["updated_at", "2016-05-10 22:57:05.207343"]]
+  [1m[35m (1.8ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("first_name", "last_name", "password_digest", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "Rod Bashirian"], ["last_name", "Streich"], ["password_digest", "$2a$10$v2GjSWKHhQqF0KIGOOD2j.TlO6oUPW4nOKS8ndA80XEDhR6QmHbnK"], ["email", "janae_abbott@okeefespencer.io"], ["created_at", "2016-05-10 22:57:05.270244"], ["updated_at", "2016-05-10 22:57:05.270244"]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (1.4ms)[0m  [1mINSERT INTO "memories" ("title", "url", "description", "story", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "circuit"], ["url", "http://robohash.org/inillovoluptas.png?size=300x300&set=set1"], ["description", "Cum et molestias et."], ["story", "[\"Recusandae reiciendis quis in alias praesentium voluptates et.\", \"Ut ullam quasi quis consequatur sit recusandae.\", \"Est nisi corporis deleniti.\"]"], ["user_id", 10], ["created_at", "2016-05-10 22:57:05.285728"], ["updated_at", "2016-05-10 22:57:05.285728"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "memories" ("title", "url", "description", "story", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["title", "alarm"], ["url", "http://robohash.org/verosinteveniet.png?size=300x300&set=set1"], ["description", "Maxime amet sit tenetur accusamus sequi."], ["story", "[\"Expedita dolorum quis accusantium enim ut.\", \"Et omnis quia voluptatum qui in error.\", \"Nobis voluptas at ut laboriosam saepe inventore omnis.\"]"], ["user_id", 3], ["created_at", "2016-05-10 22:57:05.289731"], ["updated_at", "2016-05-10 22:57:05.289731"]]
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "memories" ("title", "url", "description", "story", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "interface"], ["url", "http://robohash.org/similiquesedfuga.png?size=300x300&set=set1"], ["description", "Consequuntur eum odit nulla sit."], ["story", "[\"Doloribus eos consequatur at quia nam.\", \"Aliquam quisquam expedita ut.\", \"Et sed sint error.\"]"], ["user_id", 7], ["created_at", "2016-05-10 22:57:05.292062"], ["updated_at", "2016-05-10 22:57:05.292062"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "memories" ("title", "url", "description", "story", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["title", "matrix"], ["url", "http://robohash.org/iddoloremveniam.png?size=300x300&set=set1"], ["description", "Voluptates explicabo aperiam atque."], ["story", "[\"Ipsa excepturi numquam aut quasi autem odit.\", \"Aut unde praesentium et quia dolorem.\", \"Enim dolores vel libero nemo aut quibusdam.\"]"], ["user_id", 8], ["created_at", "2016-05-10 22:57:05.294415"], ["updated_at", "2016-05-10 22:57:05.294415"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "memories" ("title", "url", "description", "story", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "application"], ["url", "http://robohash.org/repellendusmodiiusto.png?size=300x300&set=set1"], ["description", "Voluptatem qui blanditiis maiores reiciendis rerum consequuntur."], ["story", "[\"Qui exercitationem molestiae aut ut eaque eum esse.\", \"Exercitationem quo numquam et quis.\", \"Iure dolore reiciendis qui assumenda culpa repellendus quia.\"]"], ["user_id", 3], ["created_at", "2016-05-10 22:57:05.296723"], ["updated_at", "2016-05-10 22:57:05.296723"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "memories" ("title", "url", "description", "story", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["title", "microchip"], ["url", "http://robohash.org/indeseruntenim.png?size=300x300&set=set1"], ["description", "Hic quod nesciunt officia inventore dolore ut et."], ["story", "[\"Ut quis esse quia et.\", \"Autem neque repellat quidem.\", \"Voluptatem et eos autem eveniet consequuntur.\"]"], ["user_id", 5], ["created_at", "2016-05-10 22:57:05.299399"], ["updated_at", "2016-05-10 22:57:05.299399"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "memories" ("title", "url", "description", "story", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "alarm"], ["url", "http://robohash.org/essequiavoluptate.png?size=300x300&set=set1"], ["description", "Tenetur non saepe earum."], ["story", "[\"Explicabo ratione corporis in dignissimos voluptatem.\", \"Iste consequatur dolor eos blanditiis maiores.\", \"Quos molestiae fugiat officia veritatis tempora eum.\"]"], ["user_id", 4], ["created_at", "2016-05-10 22:57:05.302004"], ["updated_at", "2016-05-10 22:57:05.302004"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "memories" ("title", "url", "description", "story", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["title", "alarm"], ["url", "http://robohash.org/ducimusassumendanon.png?size=300x300&set=set1"], ["description", "Doloribus omnis ut cumque magni qui unde voluptatibus."], ["story", "[\"Ullam et consequatur.\", \"Vel ratione itaque earum iste quis.\", \"Labore recusandae dolorum id temporibus dolor modi optio.\"]"], ["user_id", 1], ["created_at", "2016-05-10 22:57:05.304332"], ["updated_at", "2016-05-10 22:57:05.304332"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "memories" ("title", "url", "description", "story", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "microchip"], ["url", "http://robohash.org/dictaenimipsa.png?size=300x300&set=set1"], ["description", "Vel molestias alias dolores omnis consequuntur voluptatem odit nesciunt."], ["story", "[\"Minima dolore illum excepturi consequatur omnis iure.\", \"Quia corrupti consequatur.\", \"Ea in pariatur est rerum.\"]"], ["user_id", 7], ["created_at", "2016-05-10 22:57:05.307833"], ["updated_at", "2016-05-10 22:57:05.307833"]]
+  [1m[35m (0.2ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "memories" ("title", "url", "description", "story", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["title", "capacitor"], ["url", "http://robohash.org/commodicorruptia.png?size=300x300&set=set1"], ["description", "Quos consequuntur laboriosam voluptatem rem id saepe."], ["story", "[\"Itaque molestiae et corrupti eveniet.\", \"Fuga quasi numquam veniam eos aut atque.\", \"Qui sed incidunt.\"]"], ["user_id", 8], ["created_at", "2016-05-10 22:57:05.310213"], ["updated_at", "2016-05-10 22:57:05.310213"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "memories" ("title", "url", "description", "story", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "monitor"], ["url", "http://robohash.org/voluptateeaquos.png?size=300x300&set=set1"], ["description", "Provident deserunt laudantium quae voluptatibus voluptatum impedit omnis enim."], ["story", "[\"Mollitia saepe id nam.\", \"Nostrum quis qui laborum repudiandae.\", \"Omnis minus vero dolorem laudantium vel voluptatem.\"]"], ["user_id", 10], ["created_at", "2016-05-10 22:57:05.312658"], ["updated_at", "2016-05-10 22:57:05.312658"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "memories" ("title", "url", "description", "story", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["title", "panel"], ["url", "http://robohash.org/providentabitaque.png?size=300x300&set=set1"], ["description", "Consectetur iste velit sit."], ["story", "[\"Esse neque molestiae et ratione.\", \"Consequatur ex corporis ipsum quibusdam occaecati.\", \"Rem officia dicta harum sint quas ad.\"]"], ["user_id", 5], ["created_at", "2016-05-10 22:57:05.315239"], ["updated_at", "2016-05-10 22:57:05.315239"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "memories" ("title", "url", "description", "story", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "card"], ["url", "http://robohash.org/aliquamquosequi.png?size=300x300&set=set1"], ["description", "Perspiciatis velit eos est nam at corrupti necessitatibus."], ["story", "[\"Inventore cupiditate est.\", \"Commodi mollitia quod ab nihil.\", \"Quia earum officia maiores.\"]"], ["user_id", 10], ["created_at", "2016-05-10 22:57:05.317913"], ["updated_at", "2016-05-10 22:57:05.317913"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "memories" ("title", "url", "description", "story", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["title", "hard drive"], ["url", "http://robohash.org/laborumdignissimossapiente.png?size=300x300&set=set1"], ["description", "Tenetur quidem ex quam earum perferendis nulla tempora."], ["story", "[\"Doloremque neque ratione temporibus est consequatur labore sunt.\", \"Ratione ipsa sit.\", \"Non facere facilis.\"]"], ["user_id", 1], ["created_at", "2016-05-10 22:57:05.320140"], ["updated_at", "2016-05-10 22:57:05.320140"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "memories" ("title", "url", "description", "story", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "alarm"], ["url", "http://robohash.org/dolorassumendaest.png?size=300x300&set=set1"], ["description", "Tempora in inventore occaecati iusto est ullam aliquam quo."], ["story", "[\"Ratione eos consequuntur cumque alias accusantium molestias.\", \"Quia voluptate est possimus et voluptates repellendus libero.\", \"Velit ut accusamus recusandae.\"]"], ["user_id", 6], ["created_at", "2016-05-10 22:57:05.322504"], ["updated_at", "2016-05-10 22:57:05.322504"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "memories" ("title", "url", "description", "story", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["title", "interface"], ["url", "http://robohash.org/uteaquas.png?size=300x300&set=set1"], ["description", "Mollitia amet id et minus."], ["story", "[\"Et vel cum non corporis saepe labore.\", \"Aut vel sit aut labore.\", \"Enim incidunt quaerat sit.\"]"], ["user_id", 7], ["created_at", "2016-05-10 22:57:05.324831"], ["updated_at", "2016-05-10 22:57:05.324831"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "memories" ("title", "url", "description", "story", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "firewall"], ["url", "http://robohash.org/voluptasfacerevel.png?size=300x300&set=set1"], ["description", "Vel velit laboriosam impedit repellendus animi."], ["story", "[\"Corrupti nemo adipisci aperiam expedita sapiente delectus.\", \"Sed et est qui placeat sit beatae.\", \"Sed quia dolores sint.\"]"], ["user_id", 8], ["created_at", "2016-05-10 22:57:05.327112"], ["updated_at", "2016-05-10 22:57:05.327112"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "memories" ("title", "url", "description", "story", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["title", "program"], ["url", "http://robohash.org/pariaturdelectusid.png?size=300x300&set=set1"], ["description", "Labore placeat in ut."], ["story", "[\"Et et ad blanditiis molestias beatae.\", \"Doloremque beatae magni laboriosam voluptas et sint.\", \"Ratione totam fuga.\"]"], ["user_id", 10], ["created_at", "2016-05-10 22:57:05.329771"], ["updated_at", "2016-05-10 22:57:05.329771"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "memories" ("title", "url", "description", "story", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "capacitor"], ["url", "http://robohash.org/laborumofficiaet.png?size=300x300&set=set1"], ["description", "Ipsam ut totam incidunt sint suscipit est aut."], ["story", "[\"Voluptas magnam neque assumenda.\", \"Minus aut sequi culpa.\", \"Qui ad rerum voluptate delectus.\"]"], ["user_id", 4], ["created_at", "2016-05-10 22:57:05.332413"], ["updated_at", "2016-05-10 22:57:05.332413"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "memories" ("title", "url", "description", "story", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["title", "matrix"], ["url", "http://robohash.org/optioestid.png?size=300x300&set=set1"], ["description", "Atque dolorem dolores ducimus expedita."], ["story", "[\"Placeat molestias nesciunt sed.\", \"Fugiat ipsa cupiditate enim iste.\", \"Ipsam esse velit dicta.\"]"], ["user_id", 8], ["created_at", "2016-05-10 22:57:05.335077"], ["updated_at", "2016-05-10 22:57:05.335077"]]
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "memberships" ("user_id", "family_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["family_id", 4], ["created_at", "2016-05-10 22:57:05.345249"], ["updated_at", "2016-05-10 22:57:05.345249"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "memberships" ("user_id", "family_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 1], ["family_id", 3], ["created_at", "2016-05-10 22:57:05.348798"], ["updated_at", "2016-05-10 22:57:05.348798"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "memberships" ("user_id", "family_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["family_id", 5], ["created_at", "2016-05-10 22:57:05.351133"], ["updated_at", "2016-05-10 22:57:05.351133"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "memberships" ("user_id", "family_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 1], ["family_id", 2], ["created_at", "2016-05-10 22:57:05.353551"], ["updated_at", "2016-05-10 22:57:05.353551"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "memberships" ("user_id", "family_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["family_id", 9], ["created_at", "2016-05-10 22:57:05.355631"], ["updated_at", "2016-05-10 22:57:05.355631"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+
+
+Started GET "/" for ::1 at 2016-05-10 16:02:07 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (2.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 4217ms (Views: 4186.9ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/assets/memorymodal.self-a9f8d6858ce74fc22ed33689184bfed560ea71cba5c8b0f9942a898201f20242.css?body=1" for ::1 at 2016-05-10 16:02:12 -0700
+
+
+Started GET "/assets/weclome.self-eff5cba3058cb1784bac703100c8b736991248751f53f0ed6ea0a0b412c1bc89.css?body=1" for ::1 at 2016-05-10 16:02:12 -0700
+
+
+Started GET "/assets/scaffolds.self-f1d81c295739e676e148a411edfa7285d9aa9eb79f41eaaa000e3a906f742244.css?body=1" for ::1 at 2016-05-10 16:02:12 -0700
+
+
+Started GET "/assets/application.self-92316df33dc51e55d1ca8e644c428b29c382c293ae396d8c94337d128519ce78.css?body=1" for ::1 at 2016-05-10 16:02:12 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-05-10 16:02:12 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-05-10 16:02:12 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-05-10 16:02:12 -0700
+
+
+Started GET "/assets/jquery.min.1.7.self-3aaec250fd2cd4ea615eb7dd0bbc3509cc4f4390afdf4915ca25ba75428d4277.js?body=1" for ::1 at 2016-05-10 16:02:12 -0700
+
+
+Started GET "/assets/modernizr.2.5.3.min.self-f13fba014c337df90f9166c999c450529c727c850b324865a6dba1eff6e99e83.js?body=1" for ::1 at 2016-05-10 16:02:12 -0700
+
+
+Started GET "/assets/memorymodal.self-5c480b4fc891c944c04ae390a08b8603f888a5ca1b714daa9c1a164c2c2d9095.js?body=1" for ::1 at 2016-05-10 16:02:12 -0700
+
+
+Started GET "/assets/turn.self-0aeadb61d580594cd16488607409c2b7078f83661d5eff7765bda4e829427003.js?body=1" for ::1 at 2016-05-10 16:02:12 -0700
+
+
+Started GET "/assets/components.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.js?body=1" for ::1 at 2016-05-10 16:02:12 -0700
+
+
+Started GET "/assets/turn.min.self-5f7b2e351ff0c58c354e581cfdc1ae45e6a19403ebeef4cb900c4d86457756f4.js?body=1" for ::1 at 2016-05-10 16:02:12 -0700
+
+
+Started GET "/assets/whatever.self-7503576f4f7845956cee6ecef1480197920f896b679e4e0a2d80b5cfaf7b3bf7.js?body=1" for ::1 at 2016-05-10 16:02:12 -0700
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for ::1 at 2016-05-10 16:02:12 -0700
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for ::1 at 2016-05-10 16:02:12 -0700
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for ::1 at 2016-05-10 16:02:12 -0700
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for ::1 at 2016-05-10 16:02:12 -0700
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for ::1 at 2016-05-10 16:02:12 -0700
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for ::1 at 2016-05-10 16:02:12 -0700
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for ::1 at 2016-05-10 16:02:12 -0700
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for ::1 at 2016-05-10 16:02:12 -0700
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for ::1 at 2016-05-10 16:02:12 -0700
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for ::1 at 2016-05-10 16:02:12 -0700
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for ::1 at 2016-05-10 16:02:12 -0700
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for ::1 at 2016-05-10 16:02:12 -0700
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for ::1 at 2016-05-10 16:02:12 -0700
+
+
+Started GET "/assets/application.self-91ebb571b23695956ede9614fdd513f3c94fd69882852235f79bf7294baefa73.js?body=1" for ::1 at 2016-05-10 16:02:12 -0700
+
+
+Started GET "/users/1" for ::1 at 2016-05-10 16:02:24 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (2.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (1.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mMemory Load (2.1ms)[0m  SELECT "memories".* FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 1]]
+  Rendered users/show.html.erb within layouts/application (45.2ms)
+Completed 500 Internal Server Error in 103ms (ActiveRecord: 7.3ms)
+
+ActionView::Template::Error (undefined method `families' for nil:NilClass):
+    168:           <br>
+    169: 
+    170:           <!-- If memory does not belong to user's family member's, they cannot share -->
+    171:           <%current_user.families.each do |family_member| %>
+    172:             <%if memory.user_id == family_member.id %>
+    173:               <p class= "indent">
+    174:                 <%= link_to 'Share', share_index_path(memory), method: :post %>
+  app/views/users/show.html.erb:171:in `block in _app_views_users_show_html_erb___1797129686099313102_70300455304700'
+  app/views/users/show.html.erb:151:in `_app_views_users_show_html_erb___1797129686099313102_70300455304700'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.9ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (57.9ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (317.6ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (382.7ms)
+
+
+Started POST "/users" for ::1 at 2016-05-10 16:02:55 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"first_name"=>"don", "last_name"=>"lang", "email"=>"don@lang.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("email", "first_name", "last_name", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["email", "don@lang.com"], ["first_name", "don"], ["last_name", "lang"], ["password_digest", "$2a$10$E.lpecoWk9CXZRaJPnozSO92twXhTRqvGnDCaaGnDbHbCmUxWf6FO"], ["created_at", "2016-05-10 23:02:55.483666"], ["updated_at", "2016-05-10 23:02:55.483666"]]
+  [1m[36m (2.0ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/users/11
+Completed 302 Found in 73ms (ActiveRecord: 2.5ms)
+
+
+Started GET "/users/11" for ::1 at 2016-05-10 16:02:55 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1[0m  [["user_id", 11]]
+  [1m[35mMemory Load (0.2ms)[0m  SELECT "memories".* FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 11]]
+  Rendered users/show.html.erb within layouts/application (2.2ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 11]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 11]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 11]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1  [["user_id", 11]]
+Completed 200 OK in 69ms (Views: 65.6ms | ActiveRecord: 1.2ms)
+  [1m[36mUser Load (1.6ms)[0m  [1mSELECT "users".* FROM "users"[0m
+
+
+Started DELETE "/sessions/11" for ::1 at 2016-05-10 16:04:25 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"daWnXG8cadT971pItN82CA0d6qL4jDK2/ko30ViBDXJcw1J04rhQop6IHTcGujkshRtNopW4XKrLFYWo5fokAw==", "id"=>"11"}
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-05-10 16:04:25 -0700
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 66ms (Views: 65.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for ::1 at 2016-05-10 16:04:52 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"rae.kaulke@skileskilback.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (7.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1[0m  [["email", "rae.kaulke@skileskilback.com"]]
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 71ms (ActiveRecord: 7.2ms)
+
+
+Started GET "/users/2" for ::1 at 2016-05-10 16:04:52 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35mMemory Load (0.2ms)[0m  SELECT "memories".* FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 2]]
+  Rendered users/show.html.erb within layouts/application (2.1ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1  [["user_id", 2]]
+Completed 200 OK in 77ms (Views: 74.9ms | ActiveRecord: 1.2ms)
+  [1m[36mUser Load (1.6ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (1.6ms)[0m  [1mSELECT "users".* FROM "users"[0m
+
+
+Started POST "/users/2/memories" for ::1 at 2016-05-10 16:11:37 -0700
+Processing by MemoriesController#create as HTML
+  Parameters: {"memory"=>{"title"=>"Explosm", "url"=>"https://youtu.be/HRkm3javGfo", "description"=>"web comic", "story"=>"story of my life", "private"=>"false"}, "user_id"=>"2"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "memories" ("title", "url", "description", "story", "private", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "Explosm"], ["url", "https://youtu.be/HRkm3javGfo"], ["description", "web comic"], ["story", "story of my life"], ["private", "f"], ["user_id", 2], ["created_at", "2016-05-10 23:11:37.566377"], ["updated_at", "2016-05-10 23:11:37.566377"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 7ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/users/2" for ::1 at 2016-05-10 16:11:37 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1  [["user_id", 2]]
+  [1m[36mMemory Load (0.2ms)[0m  [1mSELECT "memories".* FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1[0m  [["user_id", 2]]
+  Rendered users/show.html.erb within layouts/application (4.6ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1  [["user_id", 2]]
+Completed 200 OK in 102ms (Views: 99.5ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/users/2/memories/21/edit" for ::1 at 2016-05-10 16:11:53 -0700
+Processing by MemoriesController#edit as HTML
+  Parameters: {"user_id"=>"2", "id"=>"21"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mMemory Load (0.2ms)[0m  SELECT  "memories".* FROM "memories" WHERE "memories"."id" = $1 LIMIT 1  [["id", 21]]
+  Rendered memories/_form.html.erb (42.4ms)
+  Rendered memories/edit.html.erb within layouts/application (45.1ms)
+Completed 500 Internal Server Error in 123ms (ActiveRecord: 0.3ms)
+
+ActionView::Template::Error (undefined method `count' for nil:NilClass):
+    49:               <%= link_to "Home", user_path(@user), :class => "gray_text" %>
+    50:             </li>
+    51:             </li>
+    52:             <li class="center"> Memories <span class="badge"> <%= @memories.count %> </span>
+    53:             </li>
+    54:             <% if session[:id] && @memories.count > 0 && session[:id].to_s === params[:id].to_s %>
+    55:             <li>
+  app/views/layouts/application.html.erb:52:in `_app_views_layouts_application_html_erb___2870752061410684361_70300403363020'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.2ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (58.5ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (40.9ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (1.0ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (89.3ms)
+
+
+Started GET "/users/2/memories/21/edit" for ::1 at 2016-05-10 16:11:54 -0700
+Processing by MemoriesController#edit as HTML
+  Parameters: {"user_id"=>"2", "id"=>"21"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mMemory Load (0.2ms)[0m  SELECT  "memories".* FROM "memories" WHERE "memories"."id" = $1 LIMIT 1  [["id", 21]]
+  Rendered memories/_form.html.erb (3.0ms)
+  Rendered memories/edit.html.erb within layouts/application (4.7ms)
+Completed 500 Internal Server Error in 89ms (ActiveRecord: 0.6ms)
+
+ActionView::Template::Error (undefined method `count' for nil:NilClass):
+    49:               <%= link_to "Home", user_path(@user), :class => "gray_text" %>
+    50:             </li>
+    51:             </li>
+    52:             <li class="center"> Memories <span class="badge"> <%= @memories.count %> </span>
+    53:             </li>
+    54:             <% if session[:id] && @memories.count > 0 && session[:id].to_s === params[:id].to_s %>
+    55:             <li>
+  app/views/layouts/application.html.erb:52:in `_app_views_layouts_application_html_erb___2870752061410684361_70300403363020'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.6ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (46.9ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (47.0ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (94.2ms)
+  [1m[36mMemory Load (2.2ms)[0m  [1mSELECT "memories".* FROM "memories"[0m
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (1.3ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+
+
+Started GET "/" for ::1 at 2016-05-10 16:32:58 -0700
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 58ms (Views: 56.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for ::1 at 2016-05-10 16:33:06 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"rae.kaulke@skileskilback.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1[0m  [["email", "rae.kaulke@skileskilback.com"]]
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 61ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/users/2" for ::1 at 2016-05-10 16:33:06 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35mMemory Load (0.2ms)[0m  SELECT "memories".* FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 2]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1  [["user_id", 2]]
+  Rendered users/show.html.erb within layouts/application (3.1ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 2]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1[0m  [["user_id", 2]]
+Completed 200 OK in 84ms (Views: 81.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/users/2/memories/21/edit" for ::1 at 2016-05-10 16:33:12 -0700
+Processing by MemoriesController#edit as HTML
+  Parameters: {"user_id"=>"2", "id"=>"21"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mMemory Load (0.2ms)[0m  [1mSELECT  "memories".* FROM "memories" WHERE "memories"."id" = $1 LIMIT 1[0m  [["id", 21]]
+  Rendered memories/_form.html.erb (2.4ms)
+  Rendered memories/edit.html.erb within layouts/application (4.0ms)
+Completed 500 Internal Server Error in 78ms (ActiveRecord: 0.3ms)
+
+ActionView::Template::Error (undefined method `count' for nil:NilClass):
+    49:               <%= link_to "Home", user_path(@user), :class => "gray_text" %>
+    50:             </li>
+    51:             </li>
+    52:             <li class="center"> Memories <span class="badge"> <%= @memories.count %> </span>
+    53:             </li>
+    54:             <% if session[:id] && @memories.count > 0 && session[:id].to_s === params[:id].to_s %>
+    55:             <li>
+  app/views/layouts/application.html.erb:52:in `_app_views_layouts_application_html_erb___2870752061410684361_70300403363020'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.6ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (44.9ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (39.0ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (85.2ms)
+
+
+Started GET "/users/2/memories/21/edit" for ::1 at 2016-05-10 16:33:13 -0700
+Processing by MemoriesController#edit as HTML
+  Parameters: {"user_id"=>"2", "id"=>"21"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mMemory Load (0.2ms)[0m  [1mSELECT  "memories".* FROM "memories" WHERE "memories"."id" = $1 LIMIT 1[0m  [["id", 21]]
+  Rendered memories/_form.html.erb (2.5ms)
+  Rendered memories/edit.html.erb within layouts/application (3.9ms)
+Completed 500 Internal Server Error in 73ms (ActiveRecord: 0.3ms)
+
+ActionView::Template::Error (undefined method `count' for nil:NilClass):
+    49:               <%= link_to "Home", user_path(@user), :class => "gray_text" %>
+    50:             </li>
+    51:             </li>
+    52:             <li class="center"> Memories <span class="badge"> <%= @memories.count %> </span>
+    53:             </li>
+    54:             <% if session[:id] && @memories.count > 0 && session[:id].to_s === params[:id].to_s %>
+    55:             <li>
+  app/views/layouts/application.html.erb:52:in `_app_views_layouts_application_html_erb___2870752061410684361_70300403363020'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.0ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (48.9ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (39.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (83.9ms)
+
+
+Started GET "/users/2/memories/21/edit" for ::1 at 2016-05-10 16:38:38 -0700
+Processing by MemoriesController#edit as HTML
+  Parameters: {"user_id"=>"2", "id"=>"21"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mMemory Load (0.2ms)[0m  [1mSELECT  "memories".* FROM "memories" WHERE "memories"."id" = $1 LIMIT 1[0m  [["id", 21]]
+  Rendered memories/_form.html.erb (2.8ms)
+  Rendered memories/edit.html.erb within layouts/application (4.8ms)
+Completed 500 Internal Server Error in 71ms (ActiveRecord: 0.3ms)
+
+ActionView::Template::Error (undefined method `count' for nil:NilClass):
+    49:               <%= link_to "Home", user_path(@user), :class => "gray_text" %>
+    50:             </li>
+    51:             </li>
+    52:             <li class="center"> Memories <span class="badge"> <%= @memories.count %> </span>
+    53:             </li>
+    54:             <% if session[:id] && @memories.count > 0 && session[:id].to_s === params[:id].to_s %>
+    55:             <li>
+  app/views/layouts/application.html.erb:52:in `_app_views_layouts_application_html_erb___2870752061410684361_70300403363020'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (13.5ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (62.1ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (40.1ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (86.3ms)
+
+
+Started GET "/users/2/memories/21/edit" for ::1 at 2016-05-10 16:38:38 -0700
+Processing by MemoriesController#edit as HTML
+  Parameters: {"user_id"=>"2", "id"=>"21"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mMemory Load (0.4ms)[0m  [1mSELECT  "memories".* FROM "memories" WHERE "memories"."id" = $1 LIMIT 1[0m  [["id", 21]]
+  Rendered memories/_form.html.erb (2.2ms)
+  Rendered memories/edit.html.erb within layouts/application (3.4ms)
+Completed 500 Internal Server Error in 70ms (ActiveRecord: 0.6ms)
+
+ActionView::Template::Error (undefined method `count' for nil:NilClass):
+    49:               <%= link_to "Home", user_path(@user), :class => "gray_text" %>
+    50:             </li>
+    51:             </li>
+    52:             <li class="center"> Memories <span class="badge"> <%= @memories.count %> </span>
+    53:             </li>
+    54:             <% if session[:id] && @memories.count > 0 && session[:id].to_s === params[:id].to_s %>
+    55:             <li>
+  app/views/layouts/application.html.erb:52:in `_app_views_layouts_application_html_erb___2870752061410684361_70300403363020'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.5ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (45.9ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (35.7ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (81.7ms)
+
+
+Started GET "/users/2/memories/21/edit" for ::1 at 2016-05-10 16:39:16 -0700
+Processing by MemoriesController#edit as HTML
+  Parameters: {"user_id"=>"2", "id"=>"21"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mMemory Load (0.1ms)[0m  [1mSELECT  "memories".* FROM "memories" WHERE "memories"."id" = $1 LIMIT 1[0m  [["id", 21]]
+  Rendered memories/_form.html.erb (2.3ms)
+  Rendered memories/edit.html.erb within layouts/application (3.4ms)
+Completed 500 Internal Server Error in 76ms (ActiveRecord: 0.3ms)
+
+ActionView::Template::Error (undefined method `count' for nil:NilClass):
+    49:               <%= link_to "Home", user_path(@user), :class => "gray_text" %>
+    50:             </li>
+    51:             </li>
+    52:             <li class="center"> Memories <span class="badge"> <%= @memories.count %> </span>
+    53:             </li>
+    54:             <% if session[:id] && @memories.count > 0 && session[:id].to_s === params[:id].to_s %>
+    55:             <li>
+  app/views/layouts/application.html.erb:52:in `_app_views_layouts_application_html_erb___2870752061410684361_70300403363020'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.8ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (48.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (37.9ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (85.3ms)
+
+
+Started GET "/users/2/memories/21/edit" for ::1 at 2016-05-10 16:44:15 -0700
+Processing by MemoriesController#edit as HTML
+  Parameters: {"user_id"=>"2", "id"=>"21"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mMemory Load (0.1ms)[0m  [1mSELECT  "memories".* FROM "memories" WHERE "memories"."id" = $1 LIMIT 1[0m  [["id", 21]]
+  Rendered memories/_form.html.erb (3.1ms)
+  Rendered memories/edit.html.erb within layouts/application (4.6ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 2]]
+Completed 200 OK in 97ms (Views: 78.2ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/assets/memorymodal.self-a9f8d6858ce74fc22ed33689184bfed560ea71cba5c8b0f9942a898201f20242.css?body=1" for ::1 at 2016-05-10 16:44:16 -0700
+
+
+Started GET "/assets/scaffolds.self-f1d81c295739e676e148a411edfa7285d9aa9eb79f41eaaa000e3a906f742244.css?body=1" for ::1 at 2016-05-10 16:44:16 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-05-10 16:44:16 -0700
+
+
+Started GET "/assets/weclome.self-eff5cba3058cb1784bac703100c8b736991248751f53f0ed6ea0a0b412c1bc89.css?body=1" for ::1 at 2016-05-10 16:44:16 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-05-10 16:44:16 -0700
+
+
+Started GET "/assets/application.self-92316df33dc51e55d1ca8e644c428b29c382c293ae396d8c94337d128519ce78.css?body=1" for ::1 at 2016-05-10 16:44:16 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-05-10 16:44:16 -0700
+
+
+Started GET "/assets/jquery.min.1.7.self-3aaec250fd2cd4ea615eb7dd0bbc3509cc4f4390afdf4915ca25ba75428d4277.js?body=1" for ::1 at 2016-05-10 16:44:16 -0700
+
+
+Started GET "/assets/modernizr.2.5.3.min.self-f13fba014c337df90f9166c999c450529c727c850b324865a6dba1eff6e99e83.js?body=1" for ::1 at 2016-05-10 16:44:16 -0700
+
+
+Started GET "/assets/memorymodal.self-5c480b4fc891c944c04ae390a08b8603f888a5ca1b714daa9c1a164c2c2d9095.js?body=1" for ::1 at 2016-05-10 16:44:16 -0700
+
+
+Started GET "/assets/components.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.js?body=1" for ::1 at 2016-05-10 16:44:16 -0700
+
+
+Started GET "/assets/turn.self-0aeadb61d580594cd16488607409c2b7078f83661d5eff7765bda4e829427003.js?body=1" for ::1 at 2016-05-10 16:44:16 -0700
+
+
+Started GET "/assets/turn.min.self-5f7b2e351ff0c58c354e581cfdc1ae45e6a19403ebeef4cb900c4d86457756f4.js?body=1" for ::1 at 2016-05-10 16:44:16 -0700
+
+
+Started GET "/assets/whatever.self-7503576f4f7845956cee6ecef1480197920f896b679e4e0a2d80b5cfaf7b3bf7.js?body=1" for ::1 at 2016-05-10 16:44:16 -0700
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for ::1 at 2016-05-10 16:44:16 -0700
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for ::1 at 2016-05-10 16:44:16 -0700
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for ::1 at 2016-05-10 16:44:16 -0700
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for ::1 at 2016-05-10 16:44:16 -0700
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for ::1 at 2016-05-10 16:44:16 -0700
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for ::1 at 2016-05-10 16:44:16 -0700
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for ::1 at 2016-05-10 16:44:16 -0700
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for ::1 at 2016-05-10 16:44:16 -0700
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for ::1 at 2016-05-10 16:44:16 -0700
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for ::1 at 2016-05-10 16:44:16 -0700
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for ::1 at 2016-05-10 16:44:16 -0700
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for ::1 at 2016-05-10 16:44:16 -0700
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for ::1 at 2016-05-10 16:44:16 -0700
+
+
+Started GET "/assets/application.self-91ebb571b23695956ede9614fdd513f3c94fd69882852235f79bf7294baefa73.js?body=1" for ::1 at 2016-05-10 16:44:16 -0700
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users"[0m
+
+
+Started GET "/users/2/memories/21/edit" for ::1 at 2016-05-10 16:45:32 -0700
+Processing by MemoriesController#edit as HTML
+  Parameters: {"user_id"=>"2", "id"=>"21"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mMemory Load (0.2ms)[0m  SELECT  "memories".* FROM "memories" WHERE "memories"."id" = $1 LIMIT 1  [["id", 21]]
+  Rendered memories/_form.html.erb (4.2ms)
+  Rendered memories/edit.html.erb within layouts/application (5.8ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 2]]
+Completed 200 OK in 76ms (Views: 74.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/scaffolds.self-f1d81c295739e676e148a411edfa7285d9aa9eb79f41eaaa000e3a906f742244.css?body=1" for ::1 at 2016-05-10 16:45:32 -0700
+
+
+Started GET "/assets/memorymodal.self-a9f8d6858ce74fc22ed33689184bfed560ea71cba5c8b0f9942a898201f20242.css?body=1" for ::1 at 2016-05-10 16:45:32 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-05-10 16:45:32 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-05-10 16:45:32 -0700
+
+
+Started GET "/assets/weclome.self-eff5cba3058cb1784bac703100c8b736991248751f53f0ed6ea0a0b412c1bc89.css?body=1" for ::1 at 2016-05-10 16:45:32 -0700
+
+
+Started GET "/assets/application.self-92316df33dc51e55d1ca8e644c428b29c382c293ae396d8c94337d128519ce78.css?body=1" for ::1 at 2016-05-10 16:45:33 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-05-10 16:45:33 -0700
+
+
+Started GET "/assets/jquery.min.1.7.self-3aaec250fd2cd4ea615eb7dd0bbc3509cc4f4390afdf4915ca25ba75428d4277.js?body=1" for ::1 at 2016-05-10 16:45:33 -0700
+
+
+Started GET "/assets/modernizr.2.5.3.min.self-f13fba014c337df90f9166c999c450529c727c850b324865a6dba1eff6e99e83.js?body=1" for ::1 at 2016-05-10 16:45:33 -0700
+
+
+Started GET "/assets/memorymodal.self-5c480b4fc891c944c04ae390a08b8603f888a5ca1b714daa9c1a164c2c2d9095.js?body=1" for ::1 at 2016-05-10 16:45:33 -0700
+
+
+Started GET "/assets/components.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.js?body=1" for ::1 at 2016-05-10 16:45:33 -0700
+
+
+Started GET "/assets/turn.self-0aeadb61d580594cd16488607409c2b7078f83661d5eff7765bda4e829427003.js?body=1" for ::1 at 2016-05-10 16:45:33 -0700
+
+
+Started GET "/assets/turn.min.self-5f7b2e351ff0c58c354e581cfdc1ae45e6a19403ebeef4cb900c4d86457756f4.js?body=1" for ::1 at 2016-05-10 16:45:33 -0700
+
+
+Started GET "/assets/whatever.self-7503576f4f7845956cee6ecef1480197920f896b679e4e0a2d80b5cfaf7b3bf7.js?body=1" for ::1 at 2016-05-10 16:45:33 -0700
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for ::1 at 2016-05-10 16:45:33 -0700
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for ::1 at 2016-05-10 16:45:33 -0700
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for ::1 at 2016-05-10 16:45:33 -0700
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for ::1 at 2016-05-10 16:45:33 -0700
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for ::1 at 2016-05-10 16:45:33 -0700
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for ::1 at 2016-05-10 16:45:33 -0700
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for ::1 at 2016-05-10 16:45:33 -0700
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for ::1 at 2016-05-10 16:45:33 -0700
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for ::1 at 2016-05-10 16:45:33 -0700
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for ::1 at 2016-05-10 16:45:33 -0700
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for ::1 at 2016-05-10 16:45:33 -0700
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for ::1 at 2016-05-10 16:45:33 -0700
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for ::1 at 2016-05-10 16:45:33 -0700
+
+
+Started GET "/assets/application.self-91ebb571b23695956ede9614fdd513f3c94fd69882852235f79bf7294baefa73.js?body=1" for ::1 at 2016-05-10 16:45:33 -0700
+
+
+Started PATCH "/users/2/memories/21" for ::1 at 2016-05-10 16:46:23 -0700
+Processing by MemoriesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0S6OvpA1onivG6LpUKBPaYIyjKkoI3FE9ruVzAh9tE34SHuWHZGbDsx85ZbixUBNCjQrqUUXH1jD5Ce1tQadPA==", "memory"=>{"title"=>"Explosm", "url"=>"https://www.google.com/imgres?imgurl=http%3A%2F%2Fcoolwildlife.com%2Fwp-content%2Fuploads%2Fgalleries%2Fpost-3004%2FFox%2520Picture%2520003.jpg&imgrefurl=http%3A%2F%2Fcoolwildlife.com%2Fgallery%2Ffox-pictures%2F&docid=kv9bdZIJ_x2lnM&tbnid=j-U8au6L6da10M%3A&w=1000&h=665&bih=614&biw=1080&ved=0ahUKEwiL4s6w2NDMAhVFrxoKHRwTC9sQMwhOKAEwAQ&iact=mrc&uact=8", "description"=>"web comic", "private"=>"false", "story"=>"story of my life"}, "commit"=>"Update Memory", "user_id"=>"2", "id"=>"21"}
+  [1m[35mMemory Load (0.2ms)[0m  SELECT  "memories".* FROM "memories" WHERE "memories"."id" = $1 LIMIT 1  [["id", 21]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (6.7ms)[0m  [1mUPDATE "memories" SET "url" = $1, "updated_at" = $2 WHERE "memories"."id" = $3[0m  [["url", "https://www.google.com/imgres?imgurl=http%3A%2F%2Fcoolwildlife.com%2Fwp-content%2Fuploads%2Fgalleries%2Fpost-3004%2FFox%2520Picture%2520003.jpg&imgrefurl=http%3A%2F%2Fcoolwildlife.com%2Fgallery%2Ffox-pictures%2F&docid=kv9bdZIJ_x2lnM&tbnid=j-U8au6L6da10M%3A&w=1000&h=665&bih=614&biw=1080&ved=0ahUKEwiL4s6w2NDMAhVFrxoKHRwTC9sQMwhOKAEwAQ&iact=mrc&uact=8"], ["updated_at", "2016-05-10 23:46:23.336057"], ["id", 21]]
+  [1m[35m (6.4ms)[0m  COMMIT
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 26ms (ActiveRecord: 13.6ms)
+
+
+Started GET "/users/2" for ::1 at 2016-05-10 16:46:23 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1  [["user_id", 2]]
+  [1m[36mMemory Load (0.3ms)[0m  [1mSELECT "memories".* FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1[0m  [["user_id", 2]]
+  Rendered users/show.html.erb within layouts/application (11.5ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 2]]
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1  [["user_id", 2]]
+Completed 200 OK in 84ms (Views: 80.5ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/users/2/memories/21/edit" for ::1 at 2016-05-10 16:46:32 -0700
+Processing by MemoriesController#edit as HTML
+  Parameters: {"user_id"=>"2", "id"=>"21"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mMemory Load (0.1ms)[0m  SELECT  "memories".* FROM "memories" WHERE "memories"."id" = $1 LIMIT 1  [["id", 21]]
+  Rendered memories/_form.html.erb (2.3ms)
+  Rendered memories/edit.html.erb within layouts/application (3.9ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 2]]
+Completed 200 OK in 72ms (Views: 70.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/2/memories/21/edit" for ::1 at 2016-05-10 16:47:37 -0700
+Processing by MemoriesController#edit as HTML
+  Parameters: {"user_id"=>"2", "id"=>"21"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mMemory Load (0.1ms)[0m  [1mSELECT  "memories".* FROM "memories" WHERE "memories"."id" = $1 LIMIT 1[0m  [["id", 21]]
+  Rendered memories/_form.html.erb (2.2ms)
+  Rendered memories/edit.html.erb within layouts/application (3.7ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 2]]
+Completed 200 OK in 72ms (Views: 70.1ms | ActiveRecord: 0.6ms)
+
+
+Started PATCH "/users/2/memories/21" for ::1 at 2016-05-10 16:47:49 -0700
+Processing by MemoriesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"G+8tqLrNVGez94iVQfJ8Ju4XfL8FcQnTgca8TrbfcN0yidiAN2ltEdCQz+rzl3MCZhHbv2hFZ8+0mQ43C6RZrA==", "memory"=>{"title"=>"Explosm", "url"=>"http://imgs.xkcd.com/comics/recent_searches.png", "description"=>"web comic", "private"=>"false", "story"=>"story of my life"}, "commit"=>"Update Memory", "user_id"=>"2", "id"=>"21"}
+  [1m[36mMemory Load (0.2ms)[0m  [1mSELECT  "memories".* FROM "memories" WHERE "memories"."id" = $1 LIMIT 1[0m  [["id", 21]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "memories" SET "url" = $1, "updated_at" = $2 WHERE "memories"."id" = $3  [["url", "http://imgs.xkcd.com/comics/recent_searches.png"], ["updated_at", "2016-05-10 23:47:49.770736"], ["id", 21]]
+  [1m[36m (6.2ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 11ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/users/2" for ::1 at 2016-05-10 16:47:49 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35mMemory Load (0.2ms)[0m  SELECT "memories".* FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 2]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1  [["user_id", 2]]
+  Rendered users/show.html.erb within layouts/application (3.4ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "memories" WHERE "memories"."user_id" = $1  [["user_id", 2]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."family_id" WHERE "memberships"."user_id" = $1[0m  [["user_id", 2]]
+Completed 200 OK in 76ms (Views: 73.3ms | ActiveRecord: 1.1ms)
