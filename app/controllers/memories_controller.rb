@@ -27,8 +27,10 @@ class MemoriesController < ApplicationController
   # GET /memories/1/edit
   def edit
     # binding.pry
+
     @user = User.find_by(id: params[:user_id])
     @memory = Memory.find_by(id: params[:id])
+    @memories = @user.memories
     # @memory.update(memory_params)
     # redirect_to user_memories
   end
