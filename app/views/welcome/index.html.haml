@@ -1,0 +1,87 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}
+      %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}
+        %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
+          %meta{:content => "Team Family", :name => "Author"}
+            %meta{:content => "Sharing our family description with you.", :name => "Description"}
+              %title Rituals
+              %link{:href => "css/bootstrap.min.css", :rel => "stylesheet"}
+                %link{:href => "css/grayscale.css", :rel => "stylesheet"}
+                  / Custom Fonts
+                  %link{:href => "font-awesome/css/font-awesome.min.css", :rel => "stylesheet", :type => "text/css"}
+                    %link{:href => "http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic", :rel => "stylesheet", :type => "text/css"}
+                      %link{:href => "http://fonts.googleapis.com/css?family=Montserrat:400,700", :rel => "stylesheet", :type => "text/css"}
+  %body#page-top{"data-spy" => "scroll", "data-target" => ".navbar-fixed-top"}
+    / Intro Header
+    %header.intro
+      .intro-body
+        .container
+          .row
+            .col-md-8.col-md-offset-2
+              %h1.brand-heading Rituals
+              %p.intro-text Keeping Your Traditions Alive
+              %a.btn.btn-circle.page-scroll{:href => "#login"}
+                %i.fa.fa-angle-double-down.animated
+    / login Section
+    %section#login.container.content-section.text-center
+      .row
+        .col-lg-8.col-lg-offset-2
+          .text-center{:style => "padding:50px"}
+            .logo
+              %h2 login
+            / Main Form
+            .login-form-1
+              %form#login-form.text-left{:action => "/sessions", :method => "post"}
+                .login-form-main-message
+                .main-login-form
+                  .login-group
+                    .form-group
+                      %label.sr-only{:for => "lg_username"} Username
+                      %input#lg_username.form-control{:name => "user[email]", :placeholder => "username", :type => "text"}
+                    .form-group
+                      %label.sr-only{:for => "lg_password"} Password
+                      %input#lg_password.form-control{:name => "user[password]", :placeholder => "password", :type => "password"}
+                    .form-group
+                      %input{:type => "submit", :value => "Login"}
+    / Register Section
+    %section#download.content-section.text-center
+      .download-section
+        .container
+          .col-lg-8.col-lg-offset-2
+            / REGISTRATION FORM
+            .text-center{:style => "padding:50px 0"}
+              .logo
+                %h2 Sign Up
+              / Main Form
+              .login-form-1
+                %form#register-form.text-left{:action => "/users", :method => "post"}
+                  .login-form-main-message
+                  .main-login-form
+                    .login-group
+                      .form-group
+                        %label.sr-only{:for => "reg_fullname"} First Name
+                        %input#reg_fullname.form-control{:name => "user[first_name]", :placeholder => "first name", :type => "text"}
+                      .form-group
+                        %label.sr-only{:for => "reg_fullname"} Last Name
+                        %input#reg_fullname.form-control{:name => "user[last_name]", :placeholder => "last name", :type => "text"}
+                      .form-group
+                        %label.sr-only{:for => "reg_username"} Email address
+                        %input#reg_username.form-control{:name => "user[email]", :placeholder => "email", :type => "text"}
+                      .form-group
+                        %label.sr-only{:for => "reg_password"} Password
+                        %input#reg_password.form-control{:name => "user[password]", :placeholder => "password", :type => "password"}
+                      .form-group
+                        %label.sr-only{:for => "reg_password_confirm"} Password Confirm
+                        %input#reg_password_confirm.form-control{:name => "user[password_confirmation]", :placeholder => "confirm password", :type => "password"}
+                      .form-group
+                        %input{:type => "submit", :value => "Sign Up"}
+    / jQuery
+    %script{:src => "js/jquery.js"}
+    / Bootstrap Core JavaScript
+    %script{:src => "js/bootstrap.min.js"}
+    / Plugin JavaScript
+    %script{:src => "js/jquery.easing.min.js"}
+    / Custom Theme JavaScript
+    %script{:src => "js/grayscale.js"}

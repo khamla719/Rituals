@@ -42,7 +42,7 @@
         <ul class="nav navbar-nav">
 
         <!-- Hidden li included to remove active class from login link when scrolled up past login section -->
-          <% if @user.email %>
+          <% if @user.email && @user.id%>
             <li class="hidden">
               <a href="#page-top"></a>
             <li>
