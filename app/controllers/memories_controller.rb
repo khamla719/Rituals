@@ -4,8 +4,7 @@ class MemoriesController < ApplicationController
 
   # GET /memories
   # GET /memories.json
-  def index
-    # binding.pry
+  def inde
     @user = User.find_by(id: session[:id])
     @memories = @user.memories
   end
@@ -25,8 +24,7 @@ class MemoriesController < ApplicationController
   end
 
   # GET /memories/1/edit
-  def edit
-    # binding.pry
+  def edi
 
     @user = User.find_by(id: params[:user_id])
     @memory = Memory.find_by(id: params[:id])
@@ -37,8 +35,7 @@ class MemoriesController < ApplicationController
 
   # POST /memories
   # POST /memories.json
-  def create
-    # binding.pry
+  def creat
     @user = User.find_by(id: params[:user_id])
     @memory = Memory.new(memory_params)
     @memory.user_id = @user.id
@@ -71,8 +68,7 @@ class MemoriesController < ApplicationController
 
   # DELETE /memories/1
   # DELETE /memories/1.json
-  def destroy
-    # binding.pry
+  def destro
     @user = User.find_by(id: params[:user_id])
     @memory = Memory.find_by(id: params[:id])
     @memory.destroy
@@ -92,7 +88,6 @@ class MemoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def memory_params
-      # binding.pry
       params.require(:memory).permit(:title, :url, :description, :story, :private)
     end
 end
