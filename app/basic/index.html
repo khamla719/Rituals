@@ -5,75 +5,72 @@
 <!--[if IE 9 ]>    <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
 <head>
-<meta name="viewport" content="width = 1050, user-scalable = no" />
-<script type="text/javascript" src="../assets/javascripts/jquery.min.1.7.js"></script>
-<script type="text/javascript" src="../assets/javascripts/modernizr.2.5.3.min.js"></script>
+	<meta name="viewport" content="width = 1050, user-scalable = no" />
+	<script type="text/javascript" src="../assets/javascripts/jquery.min.1.7.js"></script>
+	<script type="text/javascript" src="../assets/javascripts/modernizr.2.5.3.min.js"></script>
 </head>
 <body>
 
-<div class="flipbook-viewport">
-	<div class="container">
-		<div class="flipbook">
-			<div>
-			<h1> Khamla's Memories </h1>
-			</div>
+	<div class="flipbook-viewport">
+		<div class="container">
+			<div class="flipbook">
+				<div>
+				<h1> Khamla's Memories </h1>
+				</div>
 
-			<div>
-			<h2> Story </h2>
-			</div>
-			<div>
-			<h1> Grandma's Bamboo Recipe</h1>
-			<img src="https://www.ucl.ac.uk/news/news-articles/1214/birds-of-a-feather300.jpg" alt="Smiley face" width="200" height="200">
-			<br>
-			<p1> Description </p1>
-			</div>
+				<div>
+				<h2> Story </h2>
+				</div>
+				<div>
+					<h1> Grandma's Bamboo Recipe</h1>
+					<img src="https://www.ucl.ac.uk/news/news-articles/1214/birds-of-a-feather300.jpg" alt="Smiley face" width="200" height="200">
+					<br>
+					<p1> Description </p1>
+				</div>
 
+			</div>
 		</div>
 	</div>
-</div>
+	<script type="text/javascript">
 
+		function loadApp() {
 
-<script type="text/javascript">
+			// Create the flipbook
 
-function loadApp() {
+			$('.flipbook').turn({
+					// Width
 
-	// Create the flipbook
+					width:922,
 
-	$('.flipbook').turn({
-			// Width
+					// Height
 
-			width:922,
+					height:600,
 
-			// Height
+					// Elevation
 
-			height:600,
+					elevation: 50,
 
-			// Elevation
+					// Enable gradients
 
-			elevation: 50,
+					gradients: true,
 
-			// Enable gradients
+					// Auto center this flipbook
 
-			gradients: true,
+					autoCenter: true
 
-			// Auto center this flipbook
+			});
+		}
 
-			autoCenter: true
+		// Load the HTML4 version if there's not CSS transform
 
-	});
-}
+		yepnope({
+			test : Modernizr.csstransforms,
+			yep: ['../assets/javascripts/turn.js'],
+			nope: ['../assets/javascripts/turn.html4.min.js'],
+			both: ['css/basic.css'],
+			complete: loadApp
+		});
 
-// Load the HTML4 version if there's not CSS transform
-
-yepnope({
-	test : Modernizr.csstransforms,
-	yep: ['../assets/javascripts/turn.js'],
-	nope: ['../assets/javascripts/turn.html4.min.js'],
-	both: ['css/basic.css'],
-	complete: loadApp
-});
-
-</script>
-
+	</script>
 </body>
 </html>
