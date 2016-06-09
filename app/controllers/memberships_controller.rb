@@ -5,8 +5,6 @@ class MembershipsController < ApplicationController
     if @family = family = User.find_by(email: params[:email])
       Membership.create(user_id: @user.id, family_id: family.id)
       Membership.create(user_id: family.id, family_id: @user.id)
-        render partial: :membership
-      end
       redirect_to @user
     else
       redirect_to @user
