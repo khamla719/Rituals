@@ -57,7 +57,7 @@ class MemoriesController < ApplicationController
     @user = User.find_by(id: params[:user_id])
     respond_to do |format|
       if @memory.update(memory_params)
-        format.html { redirect_to  user_path(@user), notice: 'memory was successfully updated.' }
+        format.html { redirect_to user_path(@user), notice: 'memory was successfully updated.' }
         format.json { render :show, status: :ok, location: @memory }
       else
         format.html { render :edit }
@@ -79,15 +79,15 @@ class MemoriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_memory
-      if @memory
+  # Use callbacks to share common setup or constraints between actions.
+  def set_memory
+    if @memory
       @memory = Memory.find(params[:id])
-      end
     end
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def memory_params
-      params.require(:memory).permit(:title, :url, :description, :story, :private)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def memory_params
+    params.require(:memory).permit(:title, :url, :description, :story, :private)
+  end
 end
