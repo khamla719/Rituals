@@ -1,6 +1,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+/tmp/
 # Compiled source #
 ###################
 *.com
@@ -29,6 +30,7 @@
 *.sql
 *.sqlite
 /log/*.log
+/log/
 /tmp
 # OS generated files #
 ######################
@@ -39,3 +41,4 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+tmp
