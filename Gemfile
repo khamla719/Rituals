@@ -18,6 +18,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'react-rails', '~> 1.6.0'
 gem 'rails_12factor', group: :production
+gem 'haml-rails', '>= 0.3.4', :group => :development
+gem "erb2haml", :group => :development
 
 
 group :development, :test do
